@@ -1,0 +1,21 @@
+----------------------------------------
+Nome: teste 1
+Ingredientes: 
+teste 1
+teste 1
+
+Modo de preparo: 
+teste 1
+Tempo de preparo: teste 1
+Rendimento: teste 1
+----------------------------------------
+Nome: teste 2
+Ingredientes: 
+teste 2
+teste 2
+teste 2
+
+Modo de preparo: 
+teste 2
+Tempo de preparo: teste 2
+Rendimento: teste 2
