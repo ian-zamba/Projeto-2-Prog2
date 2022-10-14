@@ -1,21 +1,23 @@
 ----------------------------------------
-Nome: teste 1
+Nome: Salgado
+Tipo: Salgado
 Ingredientes: 
-teste 1
-teste 1
+salgado
+salgado
 
 Modo de preparo: 
-teste 1
-Tempo de preparo: teste 1
-Rendimento: teste 1
+salgado
+Tempo de preparo: salgado
+Rendimento: salgado
 ----------------------------------------
-Nome: teste 2
+Nome: doce
+Tipo: Doce
 Ingredientes: 
-teste 2
-teste 2
-teste 2
+doce
+doce
+doce
 
 Modo de preparo: 
-teste 2
-Tempo de preparo: teste 2
-Rendimento: teste 2
+doce
+Tempo de preparo: doce
+Rendimento: doce

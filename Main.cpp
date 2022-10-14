@@ -1,8 +1,10 @@
-#include "structs.h"
 #include "funcoes.h"
 
 
 int main(void) {
+
+    //limpa a tela
+    system("cls");
 
     //Declarando o caminho do arquivo
     char* caminhodat = "receitas.dat";
@@ -17,21 +19,24 @@ int main(void) {
         cout << "3 - Buscar receita" << endl;
         cout << "4 - Sair" << endl;
         opcao = getch();
+        //limpa a tela
+        system("cls");
+        
         switch (opcao){
             case '1':
                 Cadastro(caminhodat, caminhotxt);
                 break;
             case '2':
-                Listar(caminhodat, caminhotxt);
+                Listar(caminhodat);
                 break;
             case '3':
-                Buscar(caminhodat, caminhotxt);
+                Buscar(caminhodat);
                 break;
             case '4':
-                cout << "Saindo..." << endl;
+                Saindo();
                 break;
             default:
-                cout << "\nOpcao invalida!\n" << endl;
+                cout << "Opcao invalida!\n" << endl;
                 break;
         }
     } while (opcao != '4');
