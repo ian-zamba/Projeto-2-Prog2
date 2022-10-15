@@ -3,6 +3,9 @@
 
 int main(void){
 
+    //deixar em portugues
+    setlocale(LC_ALL, "Portuguese");
+
     //limpa a tela
     system("cls");
 
