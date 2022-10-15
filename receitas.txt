@@ -4,7 +4,6 @@ Tipo: Salgado
 Ingredientes: 
 salgado
 salgado
-
 Modo de preparo: 
 salgado
 Tempo de preparo: salgado
@@ -16,7 +15,6 @@ Ingredientes:
 doce
 doce
 doce
-
 Modo de preparo: 
 doce
 Tempo de preparo: doce

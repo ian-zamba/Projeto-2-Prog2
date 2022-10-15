@@ -84,7 +84,7 @@ void Cadastro (char* caminhodat, char* caminhotxt){
             arquivotxt << "Tipo: Salgado" << endl;
         }
 
-        arquivotxt << "Ingredientes: \n" << r.ingredientes << endl;
+        arquivotxt << "Ingredientes: \n" << r.ingredientes;
         arquivotxt << "Modo de preparo: \n" << r.modoPreparo << endl;
         arquivotxt << "Tempo de preparo: " << r.tempoPreparo << endl;
         arquivotxt << "Rendimento: " << r.rendimento << endl;
@@ -224,7 +224,7 @@ void Imprimir (Receita r){
         else{
             cout << "Tipo: Salgado" << endl;
         }
-        cout << "Ingredientes: \n" << r.ingredientes << endl;
+        cout << "Ingredientes: \n" << r.ingredientes;
         cout << "Modo de preparo: \n" << r.modoPreparo << endl;
         cout << "Tempo de preparo: " << r.tempoPreparo << endl;
         cout << "Rendimento: " << r.rendimento << endl;
