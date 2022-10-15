@@ -1,7 +1,7 @@
 #include "funcoes.h"
 
 
-int main(void) {
+int main(void){
 
     //limpa a tela
     system("cls");
@@ -14,6 +14,7 @@ int main(void) {
 
     //Menu
     do{
+
         cout << "1 - Cadastrar receita" << endl;
         cout << "2 - Listar receitas" << endl;
         cout << "3 - Buscar receita" << endl;
@@ -39,8 +40,8 @@ int main(void) {
                 cout << "Opcao invalida!\n" << endl;
                 break;
         }
-    } while (opcao != '4');
 
+    } while (opcao != '4');
 
     return 0;
 }

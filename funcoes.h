@@ -83,6 +83,7 @@ void Cadastro (char* caminhodat, char* caminhotxt){
         else{
             arquivotxt << "Tipo: Salgado" << endl;
         }
+
         arquivotxt << "Ingredientes: \n" << r.ingredientes << endl;
         arquivotxt << "Modo de preparo: \n" << r.modoPreparo << endl;
         arquivotxt << "Tempo de preparo: " << r.tempoPreparo << endl;
@@ -99,10 +100,9 @@ void Listar (char* caminhodat){
     struct Receita r;
     char tipo;
     int achou = 0;
+    fstream arquivodat;    
 
     //Abrindo o arquivo como in
-
-    fstream arquivodat;    
     arquivodat.open(caminhodat, ios::in);
 
         //chechando se o arquivo existe
