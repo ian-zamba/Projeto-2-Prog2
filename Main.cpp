@@ -9,10 +9,13 @@ int main(void){
     //limpa a tela
     system("cls");
 
-    //Declarando o caminho do arquivo
+    //Declarando o caminho do arquivo como ponteiro
+
     char* caminhodat = "receitas.dat";
     char* caminhotxt = "receitas.txt";
+
     //Declarando a variável de opção
+    
     char opcao;
 
     //Menu

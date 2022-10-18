@@ -19,3 +19,14 @@ Modo de preparo:
 doce
 Tempo de preparo: doce
 Rendimento: doce
+----------------------------------------
+Nome: Brigadeiro
+Tipo: Doce
+Ingredientes: 
+leite condencado
+achocolatado
+manteiga
+Modo de preparo: 
+misture tudo na panela e deixe chegar no ponto de brigadeiro
+Tempo de preparo: 15 min
+Rendimento: 10
