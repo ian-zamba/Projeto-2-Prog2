@@ -169,7 +169,8 @@ void Buscar (char* caminhodat){
     //Declaração de variáveis
     
     struct Receita r;
-    char nome[35];
+    char pesquisa[35];    
+    char aux[35];
     int achou = 0;
     fstream arquivodat;    
 
@@ -184,7 +185,9 @@ void Buscar (char* caminhodat){
         }else{
             //Lendo o nome da receita
             cout << "Digite o nome da receita: ";
-            cin.getline(nome, 35);
+            fgets(pesquisa, 35, stdin);
+            //tirar o \n do final da string
+            pesquisa[strlen(pesquisa)-1] = '\0';
 
             //Lendo os dados do arquivo
 
@@ -197,12 +200,27 @@ void Buscar (char* caminhodat){
                 for(int i = 0; i < strlen(r.nome); i++){
                     r.nome[i] = tolower(r.nome[i]);
                 }
-                for(int i = 0; i < strlen(nome); i++){
-                    nome[i] = tolower(nome[i]);
+                for(int i = 0; i < strlen(pesquisa); i++){
+                    pesquisa[i] = tolower(pesquisa[i]);
                 }
-                if(strcmp(r.nome, nome) == 0){
-                    Imprimir(r, cout);
-                    achou = 1;
+
+                int i = 0;
+                
+                while(i < strlen(r.nome)){
+                    if(r.nome[i] == pesquisa[0]){
+                        int j = 0;
+                        while(j < strlen(pesquisa)){
+                            aux[j] = r.nome[i];
+                            i++;
+                            j++;
+                        }
+                        aux[j] = '\0';
+                        if(strcmp(aux, pesquisa) == 0){
+                            Imprimir(r, cout);
+                            achou = 1;
+                        }
+                    }
+                    i++;
                 }
             
             }while (!arquivodat.eof());
