@@ -1,10 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include <math.h>
 #include <iostream>
-#include <cmath>
-#include <ctype.h>
-#include <iomanip>
 #include <windows.h>
 #include <fstream> //arquivo
 #include "structs.h"
@@ -205,7 +201,7 @@ void Buscar (char* caminhodat){
                 }
 
                 int i = 0;
-                
+
                 while(i < strlen(r.nome)){
                     if(r.nome[i] == pesquisa[0]){
                         int j = 0;

@@ -1,5 +1,4 @@
-#include "funcoes.h"
-
+#include "funcoesiniciais.h"
 
 int main(void){
 
@@ -11,8 +10,8 @@ int main(void){
 
     //Declarando o caminho do arquivo como ponteiro
 
-    char* caminhodat = "receitas.dat";
-    char* caminhotxt = "receitas.txt";
+    char* caminhodat = "src/Arquivos/receitas.dat";
+    char* caminhotxt = "src/Arquivos/receitas.txt";
 
     //Declarando a variável de opção
     
