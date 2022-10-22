@@ -3544,10 +3544,10 @@
 	<pthread.h>
 	<windows.h>
 
-1666326872 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receitas\src\main.cpp
+1666422688 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receitas\src\main.cpp
 	"funcoes.h"
 
-1666326795 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receitas\src\funcoes.h
+1666422829 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receitas\src\funcoes.h
 	<stdio.h>
 	<string.h>
 	"raylib.h"

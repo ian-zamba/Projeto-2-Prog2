@@ -4,22 +4,27 @@
 
 int main(void){
     //criando as variaveis fixas
-    const int screenWidth = 800;
-    const int screenHeight = 450;
+    const int screenWidth = 700;
+    const int screenHeight = 1000;
     const char* caminhodat = "Arquivos/receitas.dat";
     const char* caminhotxt = "Arquivos/receitas.txt";
 
     //inicializando a tela
     InitWindow(screenWidth, screenHeight, SCREEN_TITLE);
 
-    //char name[MAX_INPUT_CHARS + 1] = "\0";
     int letterCount = 0;
 
+    //retangulos dos botoes
     Rectangle abrirlivro = { screenWidth/2.0f - 120, 110, 225, 50 };
     Rectangle buscarreceita = { screenWidth/2.0f - 120, 185, 225, 50 };
     Rectangle novareceita = { screenWidth/2.0f - 120, 260, 225, 50 };
-    Rectangle sair = { screenWidth - 85, 400, 70, 38 };
-    Rectangle botaovoltar = { 10, 10, 50, 25 };
+    Rectangle sair = { screenWidth - 85, screenHeight - 45, 75, 38 };
+    Rectangle botaovoltar = { 10, 10, 105, 40 };
+
+    //fontes
+    Font fonts[MAX_FONTS] = { 0 };
+    fonts[0] = LoadFontEx("src/Fonts/titulo.ttf", 50, 0, 250);
+    fonts[1] = LoadFontEx("src/Fonts/letras.ttf", 50, 0, 250);
 
     int framesCounter = 0;
     int escolha = 0;
@@ -74,13 +79,13 @@ int main(void){
         BeginDrawing();
 
             if(escolha == 0){
-                DesenhaMenuPrincipal(abrirlivro, buscarreceita, novareceita, sair, botaovoltar);
+                DesenhaMenuPrincipal(fonts, abrirlivro, buscarreceita, novareceita, sair, botaovoltar);
             }else if (escolha == 1){
-                TelaAbreLivro(caminhodat, botaovoltar);
+                TelaAbreLivro(fonts, caminhodat, botaovoltar);
             }else if (escolha == 2){
-                TelaBuscaReceita(caminhodat, botaovoltar);
+                TelaBuscaReceita(fonts, caminhodat, botaovoltar);
             }else if (escolha == 3){
-                TelaCadastroReceita(caminhodat, caminhotxt, botaovoltar);
+                TelaCadastroReceita(fonts, caminhodat, caminhotxt, botaovoltar);
             }else if (escolha == 4){
                 return 0;
             }
@@ -111,12 +116,14 @@ int main(void){
 
 // Check if any key is pressed
 // NOTE: We limit keys check to keys between 32 (KEY_SPACE) and 126
-bool IsAnyKeyPressed()
-{
+bool IsAnyKeyPressed(){
+
     bool keyPressed = false;
     int key = GetKeyPressed();
 
-    if ((key >= 32) && (key <= 126)) keyPressed = true;
+    if ((key >= 32) && (key <= 126)){
+        keyPressed = true;
+    }
 
     return keyPressed;
 }
