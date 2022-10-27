@@ -1,8 +1,8 @@
 struct Receita{
-    char nome[35];
+    char nome[25];
     char tipo;
-    char ingredientes[150];
-    char modoPreparo[100];
+    char ingredientes[200];
+    char modoPreparo[300];
     char tempoPreparo[10];
     char rendimento[10];
 };

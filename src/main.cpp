@@ -4,39 +4,74 @@
 
 int main(void){
     //criando as variaveis fixas
-    const int screenWidth = 700;
-    const int screenHeight = 1000;
     const char* caminhodat = "Arquivos/receitas.dat";
     const char* caminhotxt = "Arquivos/receitas.txt";
 
     //inicializando a tela
     InitWindow(screenWidth, screenHeight, SCREEN_TITLE);
 
-    int letterCount = 0;
-
     //retangulos dos botoes
-    Rectangle abrirlivro = { screenWidth/2.0f - 120, 110, 225, 50 };
-    Rectangle buscarreceita = { screenWidth/2.0f - 120, 185, 225, 50 };
-    Rectangle novareceita = { screenWidth/2.0f - 120, 260, 225, 50 };
-    Rectangle sair = { screenWidth - 85, screenHeight - 45, 75, 38 };
-    Rectangle botaovoltar = { 10, 10, 105, 40 };
+    Rectangle abrirlivro;
+    Rectangle buscarreceita;
+    Rectangle novareceita;
+    Rectangle sair;
+    Rectangle botaovoltar;
+
+    //retaangulos dos textos
+    Rectangle botaonome;
+    Rectangle botaoingredientes;
+    Rectangle botaomodoPreparo;
+    Rectangle botaotempoPreparo;
+    Rectangle botaorendimento;
+    Rectangle botaotipo;
+    Rectangle botaocadastro;
 
     //fontes
     Font fonts[MAX_FONTS] = { 0 };
     fonts[0] = LoadFontEx("src/Fonts/titulo.ttf", 50, 0, 250);
     fonts[1] = LoadFontEx("src/Fonts/letras.ttf", 50, 0, 250);
 
-    int framesCounter = 0;
+    //criando as variaveis
     int escolha = 0;
+    int escolhatexto = 0;
+    int mousenoquadrado = 0, mousenoquadradoaux = 0;
+    struct Receita r = {0};
+    r.tipo = '0';
+
+    int emcimatipo = 0;
+    int auxtipo = 0;
 
 
     SetTargetFPS(10);               // Set our game to run at 10 frames-per-second
     //--------------------------------------------------------------------------------------
 
-    // Main game loop
     while (!WindowShouldClose()){
 
         escolha = EscolhaBotao(escolha, abrirlivro, buscarreceita, novareceita, sair, botaovoltar);
+
+        escolhatexto = EscolhaTexto(mousenoquadrado, mousenoquadradoaux,  botaonome, botaoingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento);
+
+        r.tipo = TipoReceita(r, botaotipo, emcimatipo, auxtipo);
+
+        if(escolhatexto == 1){
+            char *p = r.nome;
+            ReceberEscrita(p, 24);
+        }else if(escolhatexto == 2){
+            char *p = r.ingredientes;
+            ReceberEscrita(p, 150);
+        }else if(escolhatexto == 3){
+            char *p = r.modoPreparo;
+            ReceberEscrita(p, 100);
+        }else if(escolhatexto == 4){
+            char *p = r.tempoPreparo;
+            ReceberEscrita(p, 10);
+        }else if(escolhatexto == 5){
+            char *p = r.rendimento;
+            ReceberEscrita(p, 10);
+        }
+
+
+
 
         /*
         if (escolha == 1){
@@ -79,13 +114,85 @@ int main(void){
         BeginDrawing();
 
             if(escolha == 0){
+
+                //retangulos dos botoes
+                abrirlivro = { screenWidth/2.0f - 120, 110, 225, 50 };
+                buscarreceita = { screenWidth/2.0f - 120, 185, 225, 50 };
+                novareceita = { screenWidth/2.0f - 120, 260, 230, 50 };
+                sair = { screenWidth - 85, screenHeight - 45, 75, 38 };
+                botaovoltar = { 10, -1000, 105, 40 };
+
+                //retaangulos dos textos
+                botaonome.width = -1000;
+                botaotipo.width = -1000;
+                botaoingredientes.width = -1000;
+                botaomodoPreparo.width = -1000;
+                botaotempoPreparo.width = -1000;
+                botaorendimento.width = -1000;
+
+
                 DesenhaMenuPrincipal(fonts, abrirlivro, buscarreceita, novareceita, sair, botaovoltar);
+
             }else if (escolha == 1){
+
+                //retangulos dos botoes
+                abrirlivro.width = -1000;
+                buscarreceita.width = -1000;
+                novareceita.width = -1000;
+                sair.width = -1000;
+                botaovoltar = { 10, 10, 107, 40 };
+
+                //retaangulos dos textos
+                botaonome.width = -1000;
+                botaotipo.width = -1000;
+                botaoingredientes.width = -1000;
+                botaomodoPreparo.width = -1000;
+                botaotempoPreparo.width = -1000;
+                botaorendimento.width = -1000;
+
                 TelaAbreLivro(fonts, caminhodat, botaovoltar);
+
             }else if (escolha == 2){
+
+                //retangulos dos botoes
+                abrirlivro.width = -1000;
+                buscarreceita.width = -1000;
+                novareceita.width = -1000;
+                sair.width = -1000;
+                botaovoltar = { 10, 10, 107, 40 };
+
+                //retaangulos dos textos
+                botaonome.width = -1000;
+                botaotipo.width = -1000;
+                botaoingredientes.width = -1000;
+                botaomodoPreparo.width = -1000;
+                botaotempoPreparo.width = -1000;
+                botaorendimento.width = -1000;
+
                 TelaBuscaReceita(fonts, caminhodat, botaovoltar);
+
             }else if (escolha == 3){
-                TelaCadastroReceita(fonts, caminhodat, caminhotxt, botaovoltar);
+
+
+                //retangulos dos botoes
+                abrirlivro.width = -1000;
+                buscarreceita.width = -1000;
+                novareceita.width = -1000;
+                sair.width = -1000;
+                botaovoltar = { 10, 10, 107, 40 };
+
+                //retaangulos dos textos
+                //x, y, largura, altura
+                botaonome = { 10, 90, 500, 70 };
+                botaotipo = { 400, 90, 300, 50 };
+                botaoingredientes = { 10, 200, 225, 50 };
+                botaotempoPreparo = { 10, 295, 290, 50 };
+                botaorendimento = { 380, 295, 225, 50 };
+                botaomodoPreparo = { 10, 390, 675, 500 };                
+                botaocadastro = { screenWidth - 165, screenHeight - 45, 160, 38 };
+
+                TelaCadastroReceita(escolhatexto, r, fonts, caminhodat, caminhotxt, botaovoltar, botaonome, botaotipo, botaoingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento, botaocadastro);
+
             }else if (escolha == 4){
                 return 0;
             }
