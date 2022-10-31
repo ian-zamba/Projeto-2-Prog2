@@ -1,11 +1,13 @@
 #include "funcoes.h"
 
-#define SCREEN_TITLE  "Livro de receitas da vovó"
+#define SCREEN_TITLE  "Livro de receitas da vov�"
 
 int main(void){
     //criando as variaveis fixas
-    const char* caminhodat = "Arquivos/receitas.dat";
-    const char* caminhotxt = "Arquivos/receitas.txt";
+    const char* caminhoddat = "src/Arquivos/receitasd.dat";
+    const char* caminhodtxt = "src/Arquivos/receitasd.txt";    
+    const char* caminhosdat = "src/Arquivos/receitass.dat";
+    const char* caminhostxt = "src/Arquivos/receitass.txt";
 
     //inicializando a tela
     InitWindow(screenWidth, screenHeight, SCREEN_TITLE);
@@ -20,6 +22,7 @@ int main(void){
     //retaangulos dos textos
     Rectangle botaonome;
     Rectangle botaoingredientes;
+    Rectangle botaoaddingredientes;
     Rectangle botaomodoPreparo;
     Rectangle botaotempoPreparo;
     Rectangle botaorendimento;
@@ -34,7 +37,6 @@ int main(void){
     //criando as variaveis
     int escolha = 0;
     int escolhatexto = 0;
-    int mousenoquadrado = 0, mousenoquadradoaux = 0;
     struct Receita r = {0};
     r.tipo = '0';
 
@@ -47,11 +49,11 @@ int main(void){
 
     while (!WindowShouldClose()){
 
-        escolha = EscolhaBotao(escolha, abrirlivro, buscarreceita, novareceita, sair, botaovoltar);
+        escolha = EscolhaBotao(r, escolha, abrirlivro, buscarreceita, novareceita, sair, botaovoltar, botaocadastro);
 
-        escolhatexto = EscolhaTexto(mousenoquadrado, mousenoquadradoaux,  botaonome, botaoingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento);
+        escolhatexto = EscolhaTexto(escolhatexto,  botaonome, botaoingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento);
 
-        r.tipo = TipoReceita(r, botaotipo, emcimatipo, auxtipo);
+        r.tipo = TipoReceita(r, botaotipo);
 
         if(escolhatexto == 1){
             char *p = r.nome;
@@ -70,44 +72,9 @@ int main(void){
             ReceberEscrita(p, 10);
         }
 
-
-
-
-        /*
-        if (escolha == 1){
-            // Set the window's cursor to the I-Beam
-            SetMouseCursor(MOUSE_CURSOR_IBEAM);
-
-            // Get char pressed (unicode character) on the queue
-            int key = GetCharPressed();
-
-            // Check if more characters have been pressed on the same frame
-            while (key > 0)
-            {
-                // NOTE: Only allow keys in range [32..125]
-                if ((key >= 32) && (key <= 125) && (letterCount < MAX_INPUT_CHARS))
-                {
-                    name[letterCount] = (char)key;
-                    name[letterCount+1] = '\0'; // Add null terminator at the end of the string.
-                    letterCount++;
-                }
-
-                key = GetCharPressed();  // Check next character in the queue
-            }
-
-            if (IsKeyPressed(KEY_BACKSPACE))
-            {
-                letterCount--;
-                if (letterCount < 0) letterCount = 0;
-                name[letterCount] = '\0';
-            }
+        if(escolha == 5){
+            CadastroReceita(r, caminhoddat, caminhodtxt, caminhosdat, caminhostxt, escolha);
         }
-        else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
-
-        if (mouseOnText) framesCounter++;
-        else framesCounter = 0;
-        */
-        //----------------------------------------------------------------------------------
 
         // Draw
         //----------------------------------------------------------------------------------
@@ -129,6 +96,8 @@ int main(void){
                 botaomodoPreparo.width = -1000;
                 botaotempoPreparo.width = -1000;
                 botaorendimento.width = -1000;
+                botaocadastro.width = -1000;
+                botaoaddingredientes.width = -1000;
 
 
                 DesenhaMenuPrincipal(fonts, abrirlivro, buscarreceita, novareceita, sair, botaovoltar);
@@ -149,8 +118,10 @@ int main(void){
                 botaomodoPreparo.width = -1000;
                 botaotempoPreparo.width = -1000;
                 botaorendimento.width = -1000;
+                botaocadastro.width = -1000;
+                botaoaddingredientes.width = -1000;
 
-                TelaAbreLivro(fonts, caminhodat, botaovoltar);
+                TelaAbreLivro(fonts, caminhoddat, botaovoltar);
 
             }else if (escolha == 2){
 
@@ -168,8 +139,10 @@ int main(void){
                 botaomodoPreparo.width = -1000;
                 botaotempoPreparo.width = -1000;
                 botaorendimento.width = -1000;
+                botaocadastro.width = -1000;
+                botaoaddingredientes.width = -1000;
 
-                TelaBuscaReceita(fonts, caminhodat, botaovoltar);
+                TelaBuscaReceita(fonts, caminhoddat, botaovoltar);
 
             }else if (escolha == 3){
 
@@ -184,14 +157,15 @@ int main(void){
                 //retaangulos dos textos
                 //x, y, largura, altura
                 botaonome = { 10, 90, 500, 70 };
-                botaotipo = { 400, 90, 300, 50 };
+                botaotipo = { 435, 200, 210, 50 };
                 botaoingredientes = { 10, 200, 225, 50 };
+                botaoaddingredientes = { 260, 200, 160, 50 };
                 botaotempoPreparo = { 10, 295, 290, 50 };
                 botaorendimento = { 380, 295, 225, 50 };
-                botaomodoPreparo = { 10, 390, 675, 500 };                
-                botaocadastro = { screenWidth - 165, screenHeight - 45, 160, 38 };
+                botaomodoPreparo = { 10, 390, 675, 540 };
+                botaocadastro = { screenWidth - 175, screenHeight - 55, 160, 44 };
 
-                TelaCadastroReceita(escolhatexto, r, fonts, caminhodat, caminhotxt, botaovoltar, botaonome, botaotipo, botaoingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento, botaocadastro);
+                TelaCadastroReceita(escolha, escolhatexto, r, fonts, botaovoltar, botaonome, botaotipo, botaoingredientes, botaoaddingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento, botaocadastro);
 
             }else if (escolha == 4){
                 return 0;

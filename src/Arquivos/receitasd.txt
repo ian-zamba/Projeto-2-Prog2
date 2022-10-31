@@ -1,0 +1,8 @@
+----------------------------------------
+Nome: Brigadeiro
+Tipo: Doce
+Ingredientes: 
+leite condModo de Preparo: 
+Misture e leve ao fogo a 180 graus ate ficar com consistencia de brigadeiro
+Tempo de Preparo: 15 Min
+Rendimento: 10
