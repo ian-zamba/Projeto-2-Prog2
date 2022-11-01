@@ -6,3 +6,14 @@ leite condModo de Preparo:
 Misture e leve ao fogo a 180 graus ate ficar com consistencia de brigadeiro
 Tempo de Preparo: 15 Min
 Rendimento: 10
+----------------------------------------
+Nome: teste 3
+Tipo: Doce
+Ingredientes: 
+teste
+teste 2
+teste 3
+Modo de Preparo: 
+teste 3
+Tempo de Preparo: teste 3
+Rendimento: teste 3

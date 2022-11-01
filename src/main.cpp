@@ -5,7 +5,7 @@
 int main(void){
     //criando as variaveis fixas
     const char* caminhoddat = "src/Arquivos/receitasd.dat";
-    const char* caminhodtxt = "src/Arquivos/receitasd.txt";    
+    const char* caminhodtxt = "src/Arquivos/receitasd.txt";
     const char* caminhosdat = "src/Arquivos/receitass.dat";
     const char* caminhostxt = "src/Arquivos/receitass.txt";
 
@@ -17,7 +17,10 @@ int main(void){
     Rectangle buscarreceita;
     Rectangle novareceita;
     Rectangle sair;
+
     Rectangle botaovoltar;
+    Rectangle botaoproximo;
+    Rectangle botaoanterior;
 
     //retaangulos dos textos
     Rectangle botaonome;
@@ -42,6 +45,12 @@ int main(void){
 
     int emcimatipo = 0;
     int auxtipo = 0;
+    int posisaoler = 0;
+    int tamanhodoce = 0;
+    int tamanhosalgado = 0;
+
+    char* ingrediente = new char[13];
+    strcpy(ingrediente, "\0");
 
 
     SetTargetFPS(10);               // Set our game to run at 10 frames-per-second
@@ -49,24 +58,28 @@ int main(void){
 
     while (!WindowShouldClose()){
 
-        escolha = EscolhaBotao(r, escolha, abrirlivro, buscarreceita, novareceita, sair, botaovoltar, botaocadastro);
+        escolha = EscolhaBotao(r, escolha, abrirlivro, buscarreceita, novareceita, sair, botaovoltar, botaocadastro, botaoaddingredientes, botaoproximo, botaoanterior);
 
         escolhatexto = EscolhaTexto(escolhatexto,  botaonome, botaoingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento);
 
         r.tipo = TipoReceita(r, botaotipo);
 
+        //checar o tamanho do arquivo
+        tamanhodoce = TamanhoArquivo(caminhoddat);
+        tamanhosalgado = TamanhoArquivo(caminhosdat);
+
         if(escolhatexto == 1){
             char *p = r.nome;
             ReceberEscrita(p, 24);
         }else if(escolhatexto == 2){
-            char *p = r.ingredientes;
-            ReceberEscrita(p, 150);
+            char *p = ingrediente;
+            ReceberEscrita(p, 13);
         }else if(escolhatexto == 3){
             char *p = r.modoPreparo;
             ReceberEscrita(p, 100);
         }else if(escolhatexto == 4){
             char *p = r.tempoPreparo;
-            ReceberEscrita(p, 10);
+            ReceberEscrita(p, 11);
         }else if(escolhatexto == 5){
             char *p = r.rendimento;
             ReceberEscrita(p, 10);
@@ -74,7 +87,28 @@ int main(void){
 
         if(escolha == 5){
             CadastroReceita(r, caminhoddat, caminhodtxt, caminhosdat, caminhostxt, escolha);
+        }else if(escolha == 6){
+            escolha = AdiconarReceita(ingrediente, r);
+        }else if(escolha == 7){
+            if(posisaoler < tamanhodoce + tamanhosalgado - 1){
+                posisaoler++;
+            }else{
+                posisaoler = tamanhodoce + tamanhosalgado - 1;
+            }
+            escolha = 1;
+        }else if(escolha == 8){
+            if(posisaoler > 0){
+                posisaoler--;
+            }else{
+                posisaoler = 0;
+            }
+            escolha = 1;
+
+        }else if(escolha == 0){
+            posisaoler = 0;
         }
+
+
 
         // Draw
         //----------------------------------------------------------------------------------
@@ -98,6 +132,8 @@ int main(void){
                 botaorendimento.width = -1000;
                 botaocadastro.width = -1000;
                 botaoaddingredientes.width = -1000;
+                botaoproximo.width = -1000;
+                botaoanterior.width = -1000;
 
 
                 DesenhaMenuPrincipal(fonts, abrirlivro, buscarreceita, novareceita, sair, botaovoltar);
@@ -110,6 +146,8 @@ int main(void){
                 novareceita.width = -1000;
                 sair.width = -1000;
                 botaovoltar = { 10, 10, 107, 40 };
+                botaoproximo = { screenWidth - 135, screenHeight - 55, 120, 44 };
+                botaoanterior = { screenWidth - 400, screenHeight - 55, 120, 44 };
 
                 //retaangulos dos textos
                 botaonome.width = -1000;
@@ -117,11 +155,11 @@ int main(void){
                 botaoingredientes.width = -1000;
                 botaomodoPreparo.width = -1000;
                 botaotempoPreparo.width = -1000;
-                botaorendimento.width = -1000;
+                botaorendimento.width = -1000;                
                 botaocadastro.width = -1000;
                 botaoaddingredientes.width = -1000;
 
-                TelaAbreLivro(fonts, caminhoddat, botaovoltar);
+                TelaAbreLivro(fonts, caminhoddat, caminhosdat, botaovoltar, botaoproximo, botaoanterior, posisaoler, tamanhodoce, tamanhosalgado);
 
             }else if (escolha == 2){
 
@@ -131,6 +169,8 @@ int main(void){
                 novareceita.width = -1000;
                 sair.width = -1000;
                 botaovoltar = { 10, 10, 107, 40 };
+                botaoproximo.width = -1000;
+                botaoanterior.width = -1000;
 
                 //retaangulos dos textos
                 botaonome.width = -1000;
@@ -152,12 +192,14 @@ int main(void){
                 buscarreceita.width = -1000;
                 novareceita.width = -1000;
                 sair.width = -1000;
+                botaoproximo.width = -1000;
+                botaoanterior.width = -1000;
                 botaovoltar = { 10, 10, 107, 40 };
 
                 //retaangulos dos textos
                 //x, y, largura, altura
-                botaonome = { 10, 90, 500, 70 };
-                botaotipo = { 435, 200, 210, 50 };
+                botaonome = { 10, 90, 675, 70 };
+                botaotipo = { 475, 200, 210, 50 };
                 botaoingredientes = { 10, 200, 225, 50 };
                 botaoaddingredientes = { 260, 200, 160, 50 };
                 botaotempoPreparo = { 10, 295, 290, 50 };
@@ -165,7 +207,7 @@ int main(void){
                 botaomodoPreparo = { 10, 390, 675, 540 };
                 botaocadastro = { screenWidth - 175, screenHeight - 55, 160, 44 };
 
-                TelaCadastroReceita(escolha, escolhatexto, r, fonts, botaovoltar, botaonome, botaotipo, botaoingredientes, botaoaddingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento, botaocadastro);
+                TelaCadastroReceita(escolha, escolhatexto, ingrediente, r, fonts, botaovoltar, botaonome, botaotipo, botaoingredientes, botaoaddingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento, botaocadastro);
 
             }else if (escolha == 4){
                 return 0;
