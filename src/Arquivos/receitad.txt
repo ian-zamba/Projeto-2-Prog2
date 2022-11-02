@@ -1,0 +1,36 @@
+----------------------------------------
+Nome: doce 1
+Tipo: Doce
+Ingredientes: 
+doce 1
+Modo de Preparo: 
+doce 1
+Tempo de Preparo: doce 1
+Rendimento: doce 1
+----------------------------------------
+Nome: doce 2
+Tipo: Doce
+Ingredientes: 
+doce 2
+Modo de Preparo: 
+doce 2
+Tempo de Preparo: doce 2
+Rendimento: doce 2
+----------------------------------------
+Nome: salgado 1
+Tipo: Salgado
+Ingredientes: 
+salgado 1
+Modo de Preparo: 
+salgado 1
+Tempo de Preparo: salgado 1
+Rendimento: salgado 1
+----------------------------------------
+Nome: doce 3
+Tipo: Doce
+Ingredientes: 
+doce 3
+Modo de Preparo: 
+doce 3
+Tempo de Preparo: doce 3
+Rendimento: doce 3

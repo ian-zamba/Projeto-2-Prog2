@@ -1,13 +1,8 @@
 #include "funcoes.h"
 
-#define SCREEN_TITLE  "Livro de receitas da vov�"
+#define SCREEN_TITLE  "Livro de receitas da vovó"
 
 int main(void){
-    //criando as variaveis fixas
-    const char* caminhoddat = "src/Arquivos/receitasd.dat";
-    const char* caminhodtxt = "src/Arquivos/receitasd.txt";
-    const char* caminhosdat = "src/Arquivos/receitass.dat";
-    const char* caminhostxt = "src/Arquivos/receitass.txt";
 
     //inicializando a tela
     InitWindow(screenWidth, screenHeight, SCREEN_TITLE);
@@ -46,14 +41,14 @@ int main(void){
     int emcimatipo = 0;
     int auxtipo = 0;
     int posisaoler = 0;
-    int tamanhodoce = 0;
+    int tamanhoarq = 0;
     int tamanhosalgado = 0;
 
     char* ingrediente = new char[13];
     strcpy(ingrediente, "\0");
 
 
-    SetTargetFPS(10);               // Set our game to run at 10 frames-per-second
+    SetTargetFPS(10);        // Set our game to run at 10 frames-per-second
     //--------------------------------------------------------------------------------------
 
     while (!WindowShouldClose()){
@@ -65,8 +60,7 @@ int main(void){
         r.tipo = TipoReceita(r, botaotipo);
 
         //checar o tamanho do arquivo
-        tamanhodoce = TamanhoArquivo(caminhoddat);
-        tamanhosalgado = TamanhoArquivo(caminhosdat);
+        tamanhoarq = TamanhoArquivo(caminhodat);
 
         if(escolhatexto == 1){
             char *p = r.nome;
@@ -76,7 +70,7 @@ int main(void){
             ReceberEscrita(p, 13);
         }else if(escolhatexto == 3){
             char *p = r.modoPreparo;
-            ReceberEscrita(p, 100);
+            ReceberEscrita(p, 300);
         }else if(escolhatexto == 4){
             char *p = r.tempoPreparo;
             ReceberEscrita(p, 11);
@@ -86,37 +80,37 @@ int main(void){
         }
 
         if(escolha == 5){
-            CadastroReceita(r, caminhoddat, caminhodtxt, caminhosdat, caminhostxt, escolha);
-        }else if(escolha == 6){
+            CadastroReceita(r, escolha);
+        }
+
+        else if(escolha == 6){
             escolha = AdiconarReceita(ingrediente, r);
-        }else if(escolha == 7){
-            if(posisaoler < tamanhodoce + tamanhosalgado - 1){
+        }
+
+        else if(escolha == 7){
+            if(posisaoler < tamanhoarq - 1){
                 posisaoler++;
-            }else{
-                posisaoler = tamanhodoce + tamanhosalgado - 1;
             }
             escolha = 1;
-        }else if(escolha == 8){
+        }
+
+        else if(escolha == 8){
             if(posisaoler > 0){
                 posisaoler--;
-            }else{
-                posisaoler = 0;
             }
             escolha = 1;
+        }
 
-        }else if(escolha == 0){
+        else if(escolha == 0){
             posisaoler = 0;
         }
 
-
-
-        // Draw
-        //----------------------------------------------------------------------------------
         BeginDrawing();
 
             if(escolha == 0){
 
                 //retangulos dos botoes
+                //x, y, largura, altura
                 abrirlivro = { screenWidth/2.0f - 120, 110, 225, 50 };
                 buscarreceita = { screenWidth/2.0f - 120, 185, 225, 50 };
                 novareceita = { screenWidth/2.0f - 120, 260, 230, 50 };
@@ -124,6 +118,7 @@ int main(void){
                 botaovoltar = { 10, -1000, 105, 40 };
 
                 //retaangulos dos textos
+                //x, y, largura, altura
                 botaonome.width = -1000;
                 botaotipo.width = -1000;
                 botaoingredientes.width = -1000;
@@ -141,38 +136,17 @@ int main(void){
             }else if (escolha == 1){
 
                 //retangulos dos botoes
+                //x, y, largura, altura
                 abrirlivro.width = -1000;
                 buscarreceita.width = -1000;
                 novareceita.width = -1000;
                 sair.width = -1000;
                 botaovoltar = { 10, 10, 107, 40 };
                 botaoproximo = { screenWidth - 135, screenHeight - 55, 120, 44 };
-                botaoanterior = { screenWidth - 400, screenHeight - 55, 120, 44 };
+                botaoanterior = { 10, screenHeight - 55, 140, 44 };
 
                 //retaangulos dos textos
-                botaonome.width = -1000;
-                botaotipo.width = -1000;
-                botaoingredientes.width = -1000;
-                botaomodoPreparo.width = -1000;
-                botaotempoPreparo.width = -1000;
-                botaorendimento.width = -1000;                
-                botaocadastro.width = -1000;
-                botaoaddingredientes.width = -1000;
-
-                TelaAbreLivro(fonts, caminhoddat, caminhosdat, botaovoltar, botaoproximo, botaoanterior, posisaoler, tamanhodoce, tamanhosalgado);
-
-            }else if (escolha == 2){
-
-                //retangulos dos botoes
-                abrirlivro.width = -1000;
-                buscarreceita.width = -1000;
-                novareceita.width = -1000;
-                sair.width = -1000;
-                botaovoltar = { 10, 10, 107, 40 };
-                botaoproximo.width = -1000;
-                botaoanterior.width = -1000;
-
-                //retaangulos dos textos
+                //x, y, largura, altura
                 botaonome.width = -1000;
                 botaotipo.width = -1000;
                 botaoingredientes.width = -1000;
@@ -182,12 +156,38 @@ int main(void){
                 botaocadastro.width = -1000;
                 botaoaddingredientes.width = -1000;
 
-                TelaBuscaReceita(fonts, caminhoddat, botaovoltar);
+                TelaAbreLivro(fonts, botaovoltar, botaoproximo, botaoanterior, posisaoler, tamanhoarq);
+
+            }else if (escolha == 2){
+
+                //retangulos dos botoes
+                //x, y, largura, altura
+                abrirlivro.width = -1000;
+                buscarreceita.width = -1000;
+                novareceita.width = -1000;
+                sair.width = -1000;
+                botaovoltar = { 10, 10, 107, 40 };
+                botaoproximo.width = -1000;
+                botaoanterior.width = -1000;
+
+                //retaangulos dos textos
+                //x, y, largura, altura
+                botaonome.width = -1000;
+                botaotipo.width = -1000;
+                botaoingredientes.width = -1000;
+                botaomodoPreparo.width = -1000;
+                botaotempoPreparo.width = -1000;
+                botaorendimento.width = -1000;
+                botaocadastro.width = -1000;
+                botaoaddingredientes.width = -1000;
+
+                TelaBuscaReceita(fonts, botaovoltar);
 
             }else if (escolha == 3){
 
 
-                //retangulos dos botoes
+                //retangulos dos botoes^
+                //x, y, largura, altura
                 abrirlivro.width = -1000;
                 buscarreceita.width = -1000;
                 novareceita.width = -1000;
@@ -213,20 +213,6 @@ int main(void){
                 return 0;
             }
 
-            /*
-            DrawText(name, (int)abrirlivro.x + 5, (int)abrirlivro.y + 8, 40, BLUE);
-
-            DrawText(TextFormat("INPUT CHARS: %i/%i", letterCount, MAX_INPUT_CHARS), 315, 250, 20, DARKGRAY);
-            if (aux == 1)
-            {
-                if (letterCount < MAX_INPUT_CHARS)
-                {
-                    // Draw blinking underscore char
-                    if (((framesCounter/20)%2) == 0) DrawText("_", (int)abrirlivro.x + 8 + MeasureText(name, 40), (int)abrirlivro.y + 12, 40, MAROON);
-                }
-                else DrawText("Press BACKSPACE to delete chars...", 230, 300, 20, GRAY);
-            }
-            */
         EndDrawing();
 
 
@@ -234,19 +220,17 @@ int main(void){
 
     CloseWindow();
 
+    // InitWindow(screenWidth, screenHeight, SCREEN_TITLE);
+
+    // while (!WindowShouldClose()){
+    //     BeginDrawing();
+    //         ClearBackground(RAYWHITE);
+    //         DrawText("Obrigado por usar o programa!", 10, 10, 20, BLACK);
+    //     EndDrawing();
+    // }
+
+    // CloseWindow();
+
+
     return 0;
-}
-
-// Check if any key is pressed
-// NOTE: We limit keys check to keys between 32 (KEY_SPACE) and 126
-bool IsAnyKeyPressed(){
-
-    bool keyPressed = false;
-    int key = GetKeyPressed();
-
-    if ((key >= 32) && (key <= 126)){
-        keyPressed = true;
-    }
-
-    return keyPressed;
 }
