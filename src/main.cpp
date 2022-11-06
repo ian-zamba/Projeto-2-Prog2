@@ -7,45 +7,51 @@ int main(void){
     //inicializando a tela
     InitWindow(screenWidth, screenHeight, SCREEN_TITLE);
 
-    //retangulos dos botoes
+    //botoes da tela inicial
     Rectangle abrirlivro;
     Rectangle buscarreceita;
     Rectangle novareceita;
     Rectangle sair;
 
+    //botoes das telas abri livro e buscar receita
     Rectangle botaovoltar;
     Rectangle botaoproximo;
     Rectangle botaoanterior;
 
-    //retaangulos dos textos
-    Rectangle botaonome;
-    Rectangle botaoingredientes;
+    //retaangulos dos textos cadastros
+    Rectangle textonome;
+    Rectangle textoingredientes;
     Rectangle botaoaddingredientes;
-    Rectangle botaomodoPreparo;
-    Rectangle botaotempoPreparo;
-    Rectangle botaorendimento;
+    Rectangle textomodopreparo;
+    Rectangle textotempopreparo;
+    Rectangle textorendimento;
     Rectangle botaotipo;
     Rectangle botaocadastro;
+
+    //variaveis buscar
+    Rectangle textobuscar;
+    int contarbusca = 0;
+    char* buscarnome = new char[25];
+    strcpy(buscarnome, "\0");
+
+    //variaveis cadastro
+    char* ingrediente = new char[13];
+    strcpy(ingrediente, "\0");
 
     //fontes
     Font fonts[MAX_FONTS] = { 0 };
     fonts[0] = LoadFontEx("src/Fonts/titulo.ttf", 50, 0, 250);
     fonts[1] = LoadFontEx("src/Fonts/letras.ttf", 50, 0, 250);
 
-    //criando as variaveis
+    //variaveis auxiliares
     int escolha = 0;
     int escolhatexto = 0;
-    struct Receita r = {0};
-    r.tipo = '0';
-
-    int emcimatipo = 0;
-    int auxtipo = 0;
     int posisaoler = 0;
     int tamanhoarq = 0;
-    int tamanhosalgado = 0;
 
-    char* ingrediente = new char[13];
-    strcpy(ingrediente, "\0");
+    //variaveis de texto
+    struct Receita r = {0};
+    r.tipo = '0';
 
 
     SetTargetFPS(10);        // Set our game to run at 10 frames-per-second
@@ -55,7 +61,9 @@ int main(void){
 
         escolha = EscolhaBotao(r, escolha, abrirlivro, buscarreceita, novareceita, sair, botaovoltar, botaocadastro, botaoaddingredientes, botaoproximo, botaoanterior);
 
-        escolhatexto = EscolhaTexto(escolhatexto,  botaonome, botaoingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento);
+        escolhatexto = EscolhaTexto(escolhatexto, textonome, textoingredientes, textomodopreparo, textotempopreparo, textorendimento, textobuscar);
+
+        contarbusca = ContarBusca(buscarnome);
 
         r.tipo = TipoReceita(r, botaotipo);
 
@@ -77,6 +85,8 @@ int main(void){
         }else if(escolhatexto == 5){
             char *p = r.rendimento;
             ReceberEscrita(p, 10);
+        }else if(escolhatexto == 6){
+            ReceberEscrita(buscarnome, 24);
         }
 
         if(escolha == 5){
@@ -84,7 +94,7 @@ int main(void){
         }
 
         else if(escolha == 6){
-            escolha = AdiconarReceita(ingrediente, r);
+            escolha = AdiconarIngrediente(ingrediente, r);
         }
 
         else if(escolha == 7){
@@ -101,113 +111,137 @@ int main(void){
             escolha = 1;
         }
 
+        else if(escolha == 9){
+            if(posisaoler < contarbusca - 1){
+                posisaoler++;
+            }
+            escolha = 2;
+        }
+
+        else if(escolha == 10){            
+            if(posisaoler > 0){
+                posisaoler--;
+            }
+            escolha = 2;
+        }
+
         else if(escolha == 0){
             posisaoler = 0;
+            buscarnome[0] = '\0';
+            r = {0};
+            r.tipo = '0';
         }
 
         BeginDrawing();
 
             if(escolha == 0){
 
-                //retangulos dos botoes
+                //criar retangulos
+                //x, y, largura, altura
+                textonome.width = -1;
+                botaotipo.width = -1;
+                textoingredientes.width = -1;
+                textomodopreparo.width = -1;
+                textotempopreparo.width = -1;
+                textorendimento.width = -1;
+                botaocadastro.width = -1;
+                botaoaddingredientes.width = -1;
+                botaoproximo.width = -1;
+                botaoanterior.width = -1;
+                textobuscar.width = -1;
+                //botaobuscar.width = -1;
+
+                //apagar retangulos
                 //x, y, largura, altura
                 abrirlivro = { screenWidth/2.0f - 120, 110, 225, 50 };
                 buscarreceita = { screenWidth/2.0f - 120, 185, 225, 50 };
                 novareceita = { screenWidth/2.0f - 120, 260, 230, 50 };
                 sair = { screenWidth - 85, screenHeight - 45, 75, 38 };
-                botaovoltar = { 10, -1000, 105, 40 };
-
-                //retaangulos dos textos
-                //x, y, largura, altura
-                botaonome.width = -1000;
-                botaotipo.width = -1000;
-                botaoingredientes.width = -1000;
-                botaomodoPreparo.width = -1000;
-                botaotempoPreparo.width = -1000;
-                botaorendimento.width = -1000;
-                botaocadastro.width = -1000;
-                botaoaddingredientes.width = -1000;
-                botaoproximo.width = -1000;
-                botaoanterior.width = -1000;
-
+                botaovoltar = { 10, -1, 105, 40 };
 
                 DesenhaMenuPrincipal(fonts, abrirlivro, buscarreceita, novareceita, sair, botaovoltar);
 
             }else if (escolha == 1){
 
-                //retangulos dos botoes
+                //apagar retangulos
                 //x, y, largura, altura
-                abrirlivro.width = -1000;
-                buscarreceita.width = -1000;
-                novareceita.width = -1000;
-                sair.width = -1000;
-                botaovoltar = { 10, 10, 107, 40 };
-                botaoproximo = { screenWidth - 135, screenHeight - 55, 120, 44 };
-                botaoanterior = { 10, screenHeight - 55, 140, 44 };
+                abrirlivro.width = -1;
+                buscarreceita.width = -1;
+                novareceita.width = -1;
+                sair.width = -1;
+                textonome.width = -1;
+                botaotipo.width = -1;
+                textoingredientes.width = -1;
+                textomodopreparo.width = -1;
+                textotempopreparo.width = -1;
+                textorendimento.width = -1;
+                botaocadastro.width = -1;
+                botaoaddingredientes.width = -1;
+                textobuscar.width = -1;
+                //botaobuscar.width = -1;
 
-                //retaangulos dos textos
+                //criar retangulos
                 //x, y, largura, altura
-                botaonome.width = -1000;
-                botaotipo.width = -1000;
-                botaoingredientes.width = -1000;
-                botaomodoPreparo.width = -1000;
-                botaotempoPreparo.width = -1000;
-                botaorendimento.width = -1000;
-                botaocadastro.width = -1000;
-                botaoaddingredientes.width = -1000;
+                botaovoltar = { 10, 10, 107, 40 };
+                botaoanterior = { 10, screenHeight - 55, 140, 44 };
+                botaoproximo = { screenWidth - 135, screenHeight - 55, 120, 44 };
 
                 TelaAbreLivro(fonts, botaovoltar, botaoproximo, botaoanterior, posisaoler, tamanhoarq);
 
             }else if (escolha == 2){
 
-                //retangulos dos botoes
+                //apagar retangulos
                 //x, y, largura, altura
-                abrirlivro.width = -1000;
-                buscarreceita.width = -1000;
-                novareceita.width = -1000;
-                sair.width = -1000;
+                abrirlivro.width = -1;
+                buscarreceita.width = -1;
+                novareceita.width = -1;
+                sair.width = -1;
+                textonome.width = -1;
+                botaotipo.width = -1;
+                textoingredientes.width = -1;
+                textomodopreparo.width = -1;
+                textotempopreparo.width = -1;
+                textorendimento.width = -1;
+                botaocadastro.width = -1;
+                botaoaddingredientes.width = -1;
+
+                //criar retangulos
+                //x, y, largura, altura
                 botaovoltar = { 10, 10, 107, 40 };
-                botaoproximo.width = -1000;
-                botaoanterior.width = -1000;
+                textobuscar = { screenWidth - 400, 10, 320, 40 };                
+                botaoanterior = { 10, screenHeight - 55, 140, 44 };
+                botaoproximo = { screenWidth - 135, screenHeight - 55, 120, 44 };
+                //botaobuscar = { textobuscar.x + textobuscar.width + 5, textobuscar.y, 225, 40};
 
-                //retaangulos dos textos
-                //x, y, largura, altura
-                botaonome.width = -1000;
-                botaotipo.width = -1000;
-                botaoingredientes.width = -1000;
-                botaomodoPreparo.width = -1000;
-                botaotempoPreparo.width = -1000;
-                botaorendimento.width = -1000;
-                botaocadastro.width = -1000;
-                botaoaddingredientes.width = -1000;
-
-                TelaBuscaReceita(fonts, botaovoltar);
+                TelaBuscaReceita(fonts, botaovoltar, textobuscar, buscarnome, tamanhoarq, posisaoler, contarbusca, botaoproximo, botaoanterior);
 
             }else if (escolha == 3){
 
 
-                //retangulos dos botoes^
+                //apagar Retangulos
                 //x, y, largura, altura
-                abrirlivro.width = -1000;
-                buscarreceita.width = -1000;
-                novareceita.width = -1000;
-                sair.width = -1000;
-                botaoproximo.width = -1000;
-                botaoanterior.width = -1000;
-                botaovoltar = { 10, 10, 107, 40 };
+                abrirlivro.width = -1;
+                buscarreceita.width = -1;
+                novareceita.width = -1;
+                sair.width = -1;
+                botaoproximo.width = -1;
+                botaoanterior.width = -1;
+                textobuscar.width = -1;
+                //botaobuscar.width = -1;
 
-                //retaangulos dos textos
+                //criar Retangulos
                 //x, y, largura, altura
-                botaonome = { 10, 90, 675, 70 };
+                botaovoltar = { 10, 10, 107, 40 };
+                textonome = { 10, 90, 675, 70 };
                 botaotipo = { 475, 200, 210, 50 };
-                botaoingredientes = { 10, 200, 225, 50 };
-                botaoaddingredientes = { 260, 200, 160, 50 };
-                botaotempoPreparo = { 10, 295, 290, 50 };
-                botaorendimento = { 380, 295, 225, 50 };
-                botaomodoPreparo = { 10, 390, 675, 540 };
+                textoingredientes = { 10, 200, 280, 50 };
+                botaoaddingredientes = { textoingredientes.x + textoingredientes.width + 5, textoingredientes.y, 160, 50 };
+                textotempopreparo = { 10, 295, 290, 50 };
+                textorendimento = { 380, 295, 225, 50 };
+                textomodopreparo = { 10, 390, 675, 540 };
                 botaocadastro = { screenWidth - 175, screenHeight - 55, 160, 44 };
 
-                TelaCadastroReceita(escolha, escolhatexto, ingrediente, r, fonts, botaovoltar, botaonome, botaotipo, botaoingredientes, botaoaddingredientes, botaomodoPreparo, botaotempoPreparo, botaorendimento, botaocadastro);
+                TelaCadastroReceita(escolha, escolhatexto, ingrediente, r, fonts, botaovoltar, textonome, botaotipo, textoingredientes, botaoaddingredientes, textomodopreparo, textotempopreparo, textorendimento, botaocadastro);
 
             }else if (escolha == 4){
                 return 0;

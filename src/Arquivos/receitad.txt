@@ -34,3 +34,24 @@ Modo de Preparo:
 doce 3
 Tempo de Preparo: doce 3
 Rendimento: doce 3
+----------------------------------------
+Nome: brigadeiro
+Tipo: Doce
+Ingredientes: 
+leite cond
+margarina
+nescau
+Modo de Preparo: 
+misture tudo e leve ao fogo ate desgrudar da panela.
+Tempo de Preparo: 15 min
+Rendimento: 10
+----------------------------------------
+Nome: brigadeiro
+Tipo: Doce
+Ingredientes: 
+a
+b
+Modo de Preparo: 
+abc
+Tempo de Preparo: a
+Rendimento: a

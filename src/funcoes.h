@@ -24,17 +24,20 @@ const char* caminhotxt = "src/Arquivos/receitad.txt";
 int EscolhaBotao(Receita r,Rectangle abrirlivro, Rectangle buscarreceita, Rectangle novareceita, Rectangle botaovoltar, Rectangle botaocadastro, Rectangle botaoaddingredientes, Rectangle botaoproximo, Rectangle botaoanterior);
 void DesenhaMenuPrincipal(Font fonts[], Rectangle abrirlivro, Rectangle buscarreceita, Rectangle novareceita, Rectangle sair, Rectangle botaovoltar);
 void TelaAbreLivro(Font fonts[], Rectangle botaovoltar, Rectangle botaoproximo, Rectangle botaoanterior, int &proximo, int &posisaoler, int &tamanhoarq);
-void TelaTelaBuscaReceita(Font fonts[], Rectangle botaovoltar);
-void TelaCadastroReceita(int &escolha, int escolhatexto, char* ingrediente, Receita &r, Font fonts[], Rectangle botaovoltar, Rectangle botaotipo, Rectangle botaonome, Rectangle botaoingredientes, Rectangle botaoaddingredientes, Rectangle botaomodoPreparo, Rectangle botaotempoPreparo, Rectangle botaorendimento, Rectangle botaocadastrar);
+void TelaBuscaReceita(Font fonts[], Rectangle botaovoltar, Rectangle textobuscar, char* buscarnome, int tamanhoarq, int posisaoler, int contarbusca, Rectangle botaoproximo, Rectangle botaoanterior);
+void TelaCadastroReceita(int &escolha, int escolhatexto, char* ingrediente, Receita &r, Font fonts[], Rectangle botaovoltar, Rectangle botaotipo, Rectangle textonome, Rectangle textoingredientes, Rectangle botaoaddingredientes, Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, Rectangle botaocadastrar);
 char TipoReceita(Receita r, Rectangle botaotipo);
-int EscolhaTexto(int mousenoquadrado, Rectangle botaonome, Rectangle botaoingredientes, Rectangle botaomodoPreparo, Rectangle botaotempoPreparo, Rectangle botaorendimento);
+int EscolhaTexto(int mousenoquadrado, Rectangle textonome, Rectangle textoingredientes, Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, Rectangle textobuscar);
 void ReceberEscrita(char* dado, int max);
 void RetangulosTexto(Font fonts[], Rectangle botao, char* dado, int tamanho, char* titulo, int tipo);
 void CadastroReceita(Receita &r, int &aux);
-void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho, int &aux);
+void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho, int aux);
 void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho);
-int AdiconarReceita(char* ingredientes, Receita &r);
-void Imprimirdados(Font fonts[],  Vector2 positions[], int posisaoler, int &tamanhoarq);
+int AdiconarIngrediente(char* ingredientes, Receita &r);
+void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq);
+void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq, char* textobuscar);
+int ContarBusca(char* textobuscar);
+void BotoesProximoAnterior(Font fonts[], Rectangle botaoproximo, Rectangle botaoanterior, int a, int b);
 static void DrawTextBoxed(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint);
 static void DrawTextBoxedSelectable(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectTint, Color selectBackTint);
 
@@ -58,11 +61,16 @@ int EscolhaBotao(Receita r, int aux, Rectangle abrirlivro, Rectangle buscarrecei
         }
     }else if (CheckCollisionPointRec(GetMousePosition(), botaoaddingredientes) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         aux = 6;
-    }else if (CheckCollisionPointRec(GetMousePosition(), botaoproximo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) || IsKeyPressed(KEY_RIGHT) && aux == 1){
+    }else if (CheckCollisionPointRec(GetMousePosition(), botaoproximo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && aux == 1 || IsKeyPressed(KEY_RIGHT) && aux == 1){
         aux = 7;
-    }else if(CheckCollisionPointRec(GetMousePosition(), botaoanterior) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) || IsKeyPressed(KEY_LEFT) && aux == 1){
+    }else if(CheckCollisionPointRec(GetMousePosition(), botaoanterior) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && aux == 1 || IsKeyPressed(KEY_LEFT) && aux == 1){
         aux = 8;
+    }else if (CheckCollisionPointRec(GetMousePosition(), botaoproximo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && aux == 2 || IsKeyPressed(KEY_RIGHT) && aux == 2){
+        aux = 9;
+    }else if(CheckCollisionPointRec(GetMousePosition(), botaoanterior) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && aux == 2 || IsKeyPressed(KEY_LEFT) && aux == 2){
+        aux = 10;
     }
+
     else if (CheckCollisionPointRec(GetMousePosition(), botaovoltar) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         aux = 0;
     }
@@ -106,45 +114,43 @@ void DesenhaMenuPrincipal(Font fonts[], Rectangle abrirlivro, Rectangle buscarre
 void TelaAbreLivro(Font fonts[], Rectangle botaovoltar, Rectangle botaoproximo, Rectangle botaoanterior, int &posisaoler, int &tamanhoarq){
 
     ClearBackground(COR_FUNDO);
-    Vector2 positions[7] = { 0 };
-    positions[0] = (Vector2){ 30, 100 };
-    positions[1] = (Vector2){ 30, 200 };
-    positions[2] = (Vector2){ 30, 300 };
-    positions[3] = (Vector2){ 30, 400 };
-    positions[4] = (Vector2){ 30, 500 };
-    positions[5] = (Vector2){ 30, 600 };
-    positions[6] = (Vector2){ screenWidth /2 - 5, 950 };
 
-    DrawTextEx(fonts[0], TextFormat("%d/%d", posisaoler + 1, tamanhoarq), positions[6], 30, 2, COR_LETRA);
+    DrawTextEx(fonts[0], TextFormat("%d/%d", posisaoler + 1, tamanhoarq), (Vector2){screenWidth /2 - 5, 950}, 30, 2, COR_LETRA);
 
-    Imprimirdados(fonts, positions, posisaoler, tamanhoarq);
-
-    //DrawText("Livro Aberto", 300, 100, 20, COR_LETRA);
-    
-    //DrawTextEx(fonts[0], TextFormat("%d", posisaoler) , positions[0], 20, 2, BLACK);
+    Imprimirdados(fonts, posisaoler, tamanhoarq);
 
     DesenhaBotao(fonts, botaovoltar, "Voltar", 29);
-    DesenhaBotao(fonts, botaoproximo, "Proximo", 28);
-    DesenhaBotao(fonts, botaoanterior, "Anterior", 28);
-    
+
+    BotoesProximoAnterior(fonts, botaoproximo, botaoanterior, tamanhoarq, posisaoler);    
 
 }
 
-void TelaBuscaReceita(Font fonts[], Rectangle botaovoltar){
+void TelaBuscaReceita(Font fonts[], Rectangle botaovoltar, Rectangle textobuscar, char* buscarnome, int tamanhoarq, int posisaoler, int contarbusca, Rectangle botaoproximo, Rectangle botaoanterior){
 
     ClearBackground(COR_FUNDO);
+    
 
-    Vector2 positions[MAX_FONTS] = { 0 };
-    positions[0] = (Vector2){ 300, 100 };
-
-    //DrawText("Pesquisar receita", 300, 100, 20, COR_LETRA);
-    DrawTextEx(fonts[1], "Pesquisar receita", positions[0], 40, 2, COR_LETRA_BOTAO);
-
+    BotoesProximoAnterior(fonts, botaoproximo, botaoanterior,contarbusca, posisaoler);
     DesenhaBotao(fonts, botaovoltar, "Voltar", 29);
+    RetangulosTexto(fonts, textobuscar, buscarnome, 29, "", 1);
+
+    if(contarbusca > 0){
+        DrawTextEx(fonts[0], TextFormat("%d/%d", posisaoler + 1, contarbusca), (Vector2){screenWidth /2 - 5, 950}, 30, 2, COR_LETRA);
+    }else{
+        DrawTextEx(fonts[0], TextFormat("%d/%d", 0, 0), (Vector2){screenWidth /2 - 5, 950}, 30, 2, COR_LETRA);
+    }
+
+    Imprimirdados(fonts, posisaoler, tamanhoarq, buscarnome);
+
+    if (CheckCollisionPointRec(GetMousePosition(), textobuscar)){
+        SetMouseCursor(MOUSE_CURSOR_IBEAM);
+    }else{
+        SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+    }
 
 }
 
-void TelaCadastroReceita(int &escolha, int escolhatexto, char* ingrediente, Receita &r, Font fonts[], Rectangle botaovoltar, Rectangle botaonome, Rectangle botaotipo, Rectangle botaoingredientes, Rectangle botaoaddingredientes, Rectangle botaomodoPreparo, Rectangle botaotempoPreparo, Rectangle botaorendimento, Rectangle botaocadastrar){
+void TelaCadastroReceita(int &escolha, int escolhatexto, char* ingrediente, Receita &r, Font fonts[], Rectangle botaovoltar, Rectangle textonome, Rectangle botaotipo, Rectangle textoingredientes, Rectangle botaoaddingredientes, Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, Rectangle botaocadastrar){
 
     ClearBackground(COR_FUNDO);
 
@@ -156,23 +162,23 @@ void TelaCadastroReceita(int &escolha, int escolhatexto, char* ingrediente, Rece
     DesenhaBotao(fonts, botaoaddingredientes, "adicionar", 29, escolha);
     
 
-    RetangulosTexto(fonts, botaonome,r.nome, 50, "Nome", 1);
-    RetangulosTexto(fonts, botaoingredientes, ingrediente, 32, "Ingredientes", 1);
-    RetangulosTexto(fonts, botaomodoPreparo, r.modoPreparo, 40, "Modo de preparo", 2);
-    RetangulosTexto(fonts, botaotempoPreparo, r.tempoPreparo, 40, "Tempo de preparo", 1);
-    RetangulosTexto(fonts, botaorendimento, r.rendimento, 29, "Rendimento", 1);
-
-    if (CheckCollisionPointRec(GetMousePosition(), botaonome) || CheckCollisionPointRec(GetMousePosition(), botaoingredientes) || CheckCollisionPointRec(GetMousePosition(), botaomodoPreparo) || CheckCollisionPointRec(GetMousePosition(), botaotempoPreparo) || CheckCollisionPointRec(GetMousePosition(), botaorendimento)){
-        SetMouseCursor(MOUSE_CURSOR_IBEAM);
-    }else{
-        SetMouseCursor(MOUSE_CURSOR_DEFAULT);
-    }
-
+    RetangulosTexto(fonts, textonome,r.nome, 50, "Nome", 1);
+    RetangulosTexto(fonts, textoingredientes, ingrediente, 32, "Ingredientes", 1);
+    RetangulosTexto(fonts, textomodopreparo, r.modoPreparo, 40, "Modo de preparo", 2);
+    RetangulosTexto(fonts, textotempopreparo, r.tempoPreparo, 40, "Tempo de preparo", 1);
+    RetangulosTexto(fonts, textorendimento, r.rendimento, 29, "Rendimento", 1);
     if(r.tipo == '0'){
         DesenhaBotao(fonts, botaotipo, "Tipo: Doce", 29, escolha);
     }else if(r.tipo == '1'){
         DesenhaBotao(fonts, botaotipo, "Tipo: Salgado", 29, escolha);
     }
+
+    if (CheckCollisionPointRec(GetMousePosition(), textonome) || CheckCollisionPointRec(GetMousePosition(), textoingredientes) || CheckCollisionPointRec(GetMousePosition(), textomodopreparo) || CheckCollisionPointRec(GetMousePosition(), textotempopreparo) || CheckCollisionPointRec(GetMousePosition(), textorendimento)){
+        SetMouseCursor(MOUSE_CURSOR_IBEAM);
+    }else{
+        SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+    }
+
 
 }
 
@@ -185,28 +191,30 @@ char TipoReceita(Receita r, Rectangle botaotipo){
 
 }
 
-int EscolhaTexto(int mousenoquadrado, Rectangle botaonome, Rectangle botaoingredientes, Rectangle botaomodoPreparo, Rectangle botaotempoPreparo, Rectangle botaorendimento){
+int EscolhaTexto(int mousenoquadrado, Rectangle textonome, Rectangle textoingredientes, Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, Rectangle textobuscar){
 
-    if(CheckCollisionPointRec(GetMousePosition(), botaonome) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+    if(CheckCollisionPointRec(GetMousePosition(), textonome) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         //SetMouseCursor(MOUSE_CURSOR_IBEAM);
         return 1;
         //mousenoquadrado = 1;
-    }else if(CheckCollisionPointRec(GetMousePosition(), botaoingredientes) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+    }else if(CheckCollisionPointRec(GetMousePosition(), textoingredientes) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         //SetMouseCursor(MOUSE_CURSOR_IBEAM);
         return 2;
         //mousenoquadrado = 2;
-    }else if(CheckCollisionPointRec(GetMousePosition(), botaomodoPreparo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+    }else if(CheckCollisionPointRec(GetMousePosition(), textomodopreparo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         //SetMouseCursor(MOUSE_CURSOR_IBEAM);
         return 3;
         //mousenoquadrado = 3;
-    }else if(CheckCollisionPointRec(GetMousePosition(), botaotempoPreparo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+    }else if(CheckCollisionPointRec(GetMousePosition(), textotempopreparo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         //SetMouseCursor(MOUSE_CURSOR_IBEAM);
         return 4;
         //mousenoquadrado = 4;
-    }else if(CheckCollisionPointRec(GetMousePosition(), botaorendimento) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+    }else if(CheckCollisionPointRec(GetMousePosition(), textorendimento) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         //SetMouseCursor(MOUSE_CURSOR_IBEAM);
         return 5;
         //mousenoquadrado = 5;
+    }else if(CheckCollisionPointRec(GetMousePosition(), textobuscar) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        return 6;
     }else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
         //SetMouseCursor(MOUSE_CURSOR_DEFAULT);
         return 0;
@@ -240,12 +248,25 @@ void ReceberEscrita(char* dado, int max){
             key = tolower((char)key);
         }
 
-        if (IsKeyPressed(KEY_BACKSPACE) || IsKeyDown(KEY_BACKSPACE)){
+        if (IsKeyDown(KEY_BACKSPACE)){
             pos = strlen(dado) - 1;
             if (pos < 0){
                 pos = 0;
             }
             dado[pos] = '\0';
+        }
+
+        if (IsKeyPressed(KEY_BACKSPACE) && IsKeyDown(KEY_LEFT_CONTROL)){
+            
+            while(dado[strlen(dado)-1] != ' '){
+                pos = strlen(dado) - 1;
+                if (pos < 0){
+                    dado[0] = '\0';
+                    break;
+                }
+                dado[pos] = '\0';
+            }
+
         }
 }
 
@@ -304,7 +325,7 @@ void CadastroReceita(Receita &r, int &aux){
 
 }
 
-void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho, int &aux){
+void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho, int aux){
 
     DrawRectangleRec(botao, WHITE);
 
@@ -334,14 +355,25 @@ void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho)
     }else DrawRectangleLines((int)botao.x, (int)botao.y, (int)botao.width, (int)botao.height, BLACK);
 }
 
-int AdiconarReceita(char* ingredientes, Receita &r){
+int AdiconarIngrediente(char* ingredientes, Receita &r){
     strcat(r.ingredientes, ingredientes);
     strcat(r.ingredientes, "\n");
     strcpy(ingredientes, "\0");
     return 3;
 }
 
-void Imprimirdados(Font fonts[],  Vector2 positions[], int posisaoler, int &tamanhoarq){
+void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq){
+    
+    
+    Vector2 positions[7] = { 0 };
+    positions[0] = (Vector2){ 30, 100 };
+    positions[1] = (Vector2){ 30, 200 };
+    positions[2] = (Vector2){ 30, 300 };
+    positions[3] = (Vector2){ 30, 400 };
+    positions[4] = (Vector2){ 30, 500 };
+    positions[5] = (Vector2){ 30, 600 };
+    positions[6] = (Vector2){ screenWidth /2 - 5, 950 };
+    
     //abrindo arquivo como in
     FILE *arquivo;
 
@@ -358,9 +390,9 @@ void Imprimirdados(Font fonts[],  Vector2 positions[], int posisaoler, int &tama
             if(i == posisaoler){
                 DrawTextEx(fonts[0], TextFormat("Nome: %s",r.nome), positions[0], 40, 2, COR_LETRA);
                 DrawTextEx(fonts[0], TextFormat("Ingredientes: %s",r.ingredientes), positions[1], 40, 2, COR_LETRA);
-                DrawTextEx(fonts[0], TextFormat("Modo de Preparo: %s",r.modoPreparo), positions[2], 40, 2, COR_LETRA);
-                DrawTextEx(fonts[0], TextFormat("Tempo de Preparo: %s",r.tempoPreparo), positions[3], 40, 2, COR_LETRA);
-                DrawTextEx(fonts[0], TextFormat("Rendimento: %s",r.rendimento), positions[4], 40, 2, COR_LETRA);
+                DrawTextEx(fonts[0], TextFormat("Tempo de Preparo: %s",r.tempoPreparo), positions[2], 40, 2, COR_LETRA);
+                DrawTextEx(fonts[0], TextFormat("Rendimento: %s",r.rendimento), positions[3], 40, 2, COR_LETRA);
+                DrawTextEx(fonts[0], TextFormat("Modo de Preparo: %s",r.modoPreparo), positions[4], 40, 2, COR_LETRA);
                 if(r.tipo == '0'){
                     DrawTextEx(fonts[0], "Tipo: Doce", positions[5], 40, 2, COR_LETRA);
                 }else if(r.tipo == '1'){
@@ -373,6 +405,89 @@ void Imprimirdados(Font fonts[],  Vector2 positions[], int posisaoler, int &tama
 
         fclose(arquivo);
     }
+}
+
+void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq, char* textobuscar){
+
+    Vector2 positions[7] = { 0 };
+    positions[0] = (Vector2){ 30, 100 };
+    positions[1] = (Vector2){ 30, 200 };
+    positions[2] = (Vector2){ 30, 300 };
+    positions[3] = (Vector2){ 30, 400 };
+    positions[4] = (Vector2){ 30, 500 };
+    positions[5] = (Vector2){ 30, 600 };
+    positions[6] = (Vector2){ screenWidth /2 - 5, 950 };
+
+    if(tamanhoarq == 0){
+        DrawTextEx(fonts[0], "Nao ha receitas cadastradas", (Vector2){ 30, 100 }, 20, 2, COR_LETRA);
+    }else{
+
+        //abrindo arquivo como in
+        FILE *arquivo;
+        arquivo = fopen(caminhodat, "r");
+
+        Receita r;
+        Receita *aux = new Receita[tamanhoarq];
+        int cont = 0;
+        while(fread(&r, sizeof(Receita), 1, arquivo) == 1){
+            if(strcmp(r.nome, textobuscar) == 0){
+                aux[cont] = r;
+                cont++;
+            }
+        }
+        if(cont == 0){
+            DrawTextEx(fonts[0], "Nenhuma receita encontrada", (Vector2){ 30, 100 }, 20, 2, COR_LETRA);
+        }else{
+
+            int i = 0;
+
+            while(i < cont){
+                if(i == posisaoler){
+                    DrawTextEx(fonts[0], TextFormat("Nome: %s",aux[i].nome), positions[0], 40, 2, COR_LETRA);
+                    DrawTextEx(fonts[0], TextFormat("Ingredientes: %s",aux[i].ingredientes), positions[1], 40, 2, COR_LETRA);
+                    DrawTextEx(fonts[0], TextFormat("Tempo de Preparo: %s",aux[i].tempoPreparo), positions[2], 40, 2, COR_LETRA);
+                    DrawTextEx(fonts[0], TextFormat("Rendimento: %s",aux[i].rendimento), positions[3], 40, 2, COR_LETRA);
+                    DrawTextEx(fonts[0], TextFormat("Modo de Preparo: %s",aux[i].modoPreparo), positions[4], 40, 2, COR_LETRA);
+                    if(aux[i].tipo == '0'){
+                        DrawTextEx(fonts[0], "Tipo: Doce", positions[5], 40, 2, COR_LETRA);
+                    }else if(aux[i].tipo == '1'){
+                        DrawTextEx(fonts[0], "Tipo: Salgado", positions[5], 40, 2, COR_LETRA);
+                    }
+                    // DrawTextEx(fonts[0], "FOI", (Vector2){ 30, 100 }, 20, 2, COR_LETRA);
+
+                }
+                i++;
+            }
+        }
+        fclose(arquivo);
+    }
+
+}
+
+int ContarBusca(char* textobuscar){
+    FILE *arquivo;
+    arquivo = fopen(caminhodat, "r");
+
+    Receita r;
+    int cont = 0;
+    while(fread(&r, sizeof(Receita), 1, arquivo) == 1){
+        if(strcmp(r.nome, textobuscar) == 0){
+            cont++;
+        }
+    }
+    fclose(arquivo);
+    return cont;
+}
+
+void BotoesProximoAnterior(Font fonts[], Rectangle botaoproximo, Rectangle botaoanterior, int a, int b){
+
+    if(a > 0 && b < a - 1){
+        DesenhaBotao(fonts, botaoproximo, "Proximo", 28);
+    }
+    if(b > 0){
+        DesenhaBotao(fonts, botaoanterior, "Anterior", 28);
+    }
+
 }
 
 
