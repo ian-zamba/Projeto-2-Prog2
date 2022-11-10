@@ -12,92 +12,266 @@
 #define COR_CAIXATEXTO WHITE
 #define MAX_FONTS 2
 
-//criando as variaveis fixas
+//variaveis fixas
 const int screenWidth = 700;
 const int screenHeight = 1000;
-
 const char* caminhodat = "src/Arquivos/receitad.dat";
 const char* caminhotxt = "src/Arquivos/receitad.txt";
-// const char* caminhosdat = "src/Arquivos/receitass.dat";
-// const char* caminhostxt = "src/Arquivos/receitass.txt";
 
-int EscolhaBotao(Receita r,Rectangle abrirlivro, Rectangle buscarreceita, Rectangle novareceita, Rectangle botaovoltar, Rectangle botaocadastro, Rectangle botaoaddingredientes, Rectangle botaoproximo, Rectangle botaoanterior);
-void DesenhaMenuPrincipal(Font fonts[], Rectangle abrirlivro, Rectangle buscarreceita, Rectangle novareceita, Rectangle sair, Rectangle botaovoltar);
-void TelaAbreLivro(Font fonts[], Rectangle botaovoltar, Rectangle botaoproximo, Rectangle botaoanterior, int &proximo, int &posisaoler, int &tamanhoarq);
-void TelaBuscaReceita(Font fonts[], Rectangle botaovoltar, Rectangle textobuscar, char* buscarnome, int tamanhoarq, int posisaoler, int contarbusca, Rectangle botaoproximo, Rectangle botaoanterior);
-void TelaCadastroReceita(int &escolha, int escolhatexto, char* ingrediente, Receita &r, Font fonts[], Rectangle botaovoltar, Rectangle botaotipo, Rectangle textonome, Rectangle textoingredientes, Rectangle botaoaddingredientes, Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, Rectangle botaocadastrar);
+//declarando as funcoes
+//---------------------------------------------------------
+int EscolhaBotao(Receita r, Rectangle abrirlivro, Rectangle buscarreceita, 
+Rectangle novareceita, Rectangle botaovoltar, Rectangle botaocadastro, 
+Rectangle botaoaddingredientes, Rectangle botaoproximo, Rectangle botaoanterior);
+//---------------------------------------------------------
+void ChecarEscolha(int &escolha, Receita &r, char* ingrediente, int &pagina, 
+int tamanhoarq, int contarbusca, char* buscarnome);
+//---------------------------------------------------------
+void DesenhaMenuPrincipal(Font fonts[], Rectangle abrirlivro, Rectangle buscarreceita, 
+Rectangle novareceita, Rectangle sair, Rectangle botaovoltar);
+//---------------------------------------------------------
+void TelaAbreLivro(Font fonts[], Rectangle botaovoltar, Rectangle botaoproximo, 
+Rectangle botaoanterior, int &proximo, int &pagina, int &tamanhoarq);
+//---------------------------------------------------------
+void TelaBuscaReceita(Font fonts[], Rectangle botaovoltar, Rectangle textobuscar, 
+char* buscarnome, int tamanhoarq, int pagina, int contarbusca, Rectangle botaoproximo, 
+Rectangle botaoanterior);
+//---------------------------------------------------------
+void TelaCadastroReceita(int &escolha, int escolhatexto, char* ingrediente, Receita &r, 
+Font fonts[], Rectangle botaovoltar, Rectangle botaotipo, Rectangle textonome, 
+Rectangle textoingredientes, Rectangle botaoaddingredientes, Rectangle textomodopreparo, 
+Rectangle textotempopreparo, Rectangle textorendimento, Rectangle botaocadastrar);
+//---------------------------------------------------------
 char TipoReceita(Receita r, Rectangle botaotipo);
-int EscolhaTexto(int mousenoquadrado, Rectangle textonome, Rectangle textoingredientes, Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, Rectangle textobuscar);
+//---------------------------------------------------------
+int EscolhaTexto(int mousenoquadrado, Rectangle textonome, Rectangle textoingredientes, 
+Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, 
+Rectangle textobuscar);
+//---------------------------------------------------------
 void ReceberEscrita(char* dado, int max);
-void RetangulosTexto(Font fonts[], Rectangle botao, char* dado, int tamanho, char* titulo, int tipo);
-void CadastroReceita(Receita &r, int &aux);
+//---------------------------------------------------------
+void CaixadeTexto(Font fonts[], Rectangle botao, char* dado, int tamanho, char* titulo, int tipo);
+//---------------------------------------------------------
+void CadastroReceita(Receita &r);
+//---------------------------------------------------------
 void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho, int aux);
+//---------------------------------------------------------
 void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho);
+//---------------------------------------------------------
 int AdiconarIngrediente(char* ingredientes, Receita &r);
-void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq);
-void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq, char* textobuscar);
+//---------------------------------------------------------
+void Imprimirdados(Font fonts[], int pagina, int tamanhoarq);
+//---------------------------------------------------------
+void Imprimirdados(Font fonts[], int pagina, int tamanhoarq, char* textobuscar);
+//---------------------------------------------------------
 int ContarBusca(char* textobuscar);
-void BotoesProximoAnterior(Font fonts[], Rectangle botaoproximo, Rectangle botaoanterior, int a, int b);
-static void DrawTextBoxed(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint);
-static void DrawTextBoxedSelectable(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectTint, Color selectBackTint);
+//---------------------------------------------------------
+void BotoesProximoAnterior(Font fonts[], Rectangle botaoproximo, Rectangle botaoanterior, 
+int a, int b);
+//---------------------------------------------------------
+static void DrawTextBoxed(Font font, const char *text, Rectangle rec, float fontSize, 
+float spacing, bool wordWrap, Color tint);
+//---------------------------------------------------------
+static void DrawTextBoxedSelectable(Font font, const char *text, Rectangle rec, 
+float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, 
+int selectLength, Color selectTint, Color selectBackTint);
+//---------------------------------------------------------
 
+//funcoes
+//---------------------------------------------------------
+//essa funcao checa se o mouse está em cima e da um clique em algum botão 
 int EscolhaBotao(Receita r, int aux, Rectangle abrirlivro, Rectangle buscarreceita, Rectangle novareceita, Rectangle sair, Rectangle botaovoltar, Rectangle botaocadastro, Rectangle botaoaddingredientes, Rectangle botaoproximo, Rectangle botaoanterior){
 
-    //checar se est� em cima de abrir livro
+    //checa se esta em cima e clica no botao abrir livro
     if (CheckCollisionPointRec(GetMousePosition(), abrirlivro) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         aux = 1;
-    //checar se est� em cima de buscar receita
+
+    //checa se esta em cima e clica no botao buscar receita
     }else if (CheckCollisionPointRec(GetMousePosition(), buscarreceita) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         aux = 2;
-    //checar se est� em cima de cadastrar receita
+
+    //checa se esta em cima e clica no botao cadastrar receita
     }else if (CheckCollisionPointRec(GetMousePosition(), novareceita) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         aux = 3;
-    //checar se est� em cima de voltar
+
+
+    //checa se esta em cima e clica no botao sair
     }else if (CheckCollisionPointRec(GetMousePosition(), sair) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         aux = 4;
+
+    //checa se esta em cima e clica no botao cadastrar receita
     }else if (CheckCollisionPointRec(GetMousePosition(), botaocadastro) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        //checa se nao tem nenhum campo vazio
         if(!strlen(r.nome) == 0 && !strlen(r.ingredientes) == 0 && !strlen(r.modoPreparo) == 0 && !strlen(r.tempoPreparo) == 0 && !strlen(r.rendimento) == 0){
             aux = 5;
         }
+    //checa se esta em cima e clica no botao de adicionar ingredientes
     }else if (CheckCollisionPointRec(GetMousePosition(), botaoaddingredientes) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         aux = 6;
+    
+    //checa se esta em cima e clica no botao de proximo e esta na tela de abrir livro
     }else if (CheckCollisionPointRec(GetMousePosition(), botaoproximo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && aux == 1 || IsKeyPressed(KEY_RIGHT) && aux == 1){
         aux = 7;
+
+    //checa se esta em cima e clica no botao de anterior e esta na tela de abrir livro
     }else if(CheckCollisionPointRec(GetMousePosition(), botaoanterior) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && aux == 1 || IsKeyPressed(KEY_LEFT) && aux == 1){
         aux = 8;
+
+    //checa se esta em cima e clica no botao de proximo e esta na tela de buscar receita
     }else if (CheckCollisionPointRec(GetMousePosition(), botaoproximo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && aux == 2 || IsKeyPressed(KEY_RIGHT) && aux == 2){
         aux = 9;
+
+    //checa se esta em cima e clica no botao de anterior e esta na tela de buscar receita
     }else if(CheckCollisionPointRec(GetMousePosition(), botaoanterior) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && aux == 2 || IsKeyPressed(KEY_LEFT) && aux == 2){
         aux = 10;
     }
 
+    //checa se nao esta em cima de nenhum botao e clica com o mouse
     else if (CheckCollisionPointRec(GetMousePosition(), botaovoltar) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
         aux = 0;
     }
 
     return aux;
 }
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao checa a escolha e faz a ação correspondente
+void ChecarEscolha(int &escolha, Receita &r, char* ingrediente, int &pagina, int tamanhoarq, int contarbusca, char* buscarnome){
 
+    if(escolha == 5){//adiciona a receita nos arquivos
+            CadastroReceita(r);
+        }
+
+        else if(escolha == 6){//adiciona os ingredientes na variavel r.ingredientes
+            escolha = AdiconarIngrediente(ingrediente, r);
+        }
+
+        else if(escolha == 7){//(botao proximo) checa se a posicao do ler for menor que o tamanho do arquivo e aumenta a posicao do ler
+            if(pagina < tamanhoarq - 1){
+                pagina++;
+            }
+            escolha = 1;
+        }
+
+        else if(escolha == 8){//(botao anterior) checa se a posicao do ler for maior que 0 e diminui a posicao do ler
+            if(pagina > 0){
+                pagina--;
+            }
+            escolha = 1;
+        }
+
+        else if(escolha == 9){//(botao proximo) checa se a posicao do ler for menor que a quantidade da busca e aumenta a posicao do ler
+            if(pagina < contarbusca - 1){
+                pagina++;
+            }
+            escolha = 2;
+        }
+
+        else if(escolha == 10){//(botao anterior) checa se a posicao do ler for maior que 0 e diminui a posicao do ler   
+            if(pagina > 0){
+                pagina--;
+            }
+            escolha = 2;
+        }
+
+        else if(escolha == 0){//zera as variaveis
+            pagina = 0;
+            buscarnome[0] = '\0';
+            r = {0};
+            r.tipo = '0';
+        }
+
+}
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao checa se o mouse está em cima e da um clique em alguma caixa de texto
+int EscolhaTexto(int mousenoquadrado, Rectangle textonome, Rectangle textoingredientes, Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, Rectangle textobuscar){
+    
+    //checa se esta em cima e clica na caixa de texto nome
+    if(CheckCollisionPointRec(GetMousePosition(), textonome) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        return 1;
+
+    //checa se esta em cima e clica na caixa de texto ingredientes
+    }else if(CheckCollisionPointRec(GetMousePosition(), textoingredientes) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        return 2;
+
+    //checa se esta em cima e clica na caixa de texto modo de preparo
+    }else if(CheckCollisionPointRec(GetMousePosition(), textomodopreparo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        return 3;
+
+    //checa se esta em cima e clica na caixa de texto tempo de preparo
+    }else if(CheckCollisionPointRec(GetMousePosition(), textotempopreparo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        return 4;
+
+    //checa se esta em cima e clica na caixa de texto rendimento
+    }else if(CheckCollisionPointRec(GetMousePosition(), textorendimento) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        return 5;
+
+    //checa se esta em cima e clica na caixa de texto buscar
+    }else if(CheckCollisionPointRec(GetMousePosition(), textobuscar) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
+        return 6;
+
+    //checa se nao esta em cima de nenhuma caixa de texto e clica com o mouse
+    }else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
+        return 0;
+    }
+
+    return mousenoquadrado;
+}
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao checa a escolha do texto e armazena o texto digitado pelo usuario na variavel correspondente
+void ChecarEscolhaTexto(int escolhatexto, Receita &r, char* ingrediente, char* buscarnome){
+
+    if(escolhatexto == 1){//se o usuario clicar na caixa de texto nome e chama a funcao que recebe a escrita do usuario
+            char *p = r.nome;//ponteiro para a variavel nome
+            ReceberEscrita(p, 24);
+        }else if(escolhatexto == 2){//se o usuario clicar na caixa de texto ingredientes e chama a funcao que recebe a escrita do usuario
+            char *p = ingrediente;//ponteiro para a variavel ingrediente
+            ReceberEscrita(p, 13);//
+        }else if(escolhatexto == 3){//se o usuario clicar na caixa de texto modo de preparo e chama a funcao que recebe a escrita do usuario
+            char *p = r.modoPreparo;//ponteiro para a variavel modoPreparo
+            ReceberEscrita(p, 300);
+        }else if(escolhatexto == 4){//se o usuario clicar na caixa de texto tempo de preparo e chama a funcao que recebe a escrita do usuario
+            char *p = r.tempoPreparo;//ponteiro para a variavel tempoPreparo
+            ReceberEscrita(p, 11);
+        }else if(escolhatexto == 5){//se o usuario clicar na caixa de texto rendimento e chama a funcao que recebe a escrita do usuario
+            char *p = r.rendimento;//ponteiro para a variavel rendimento
+            ReceberEscrita(p, 10);
+        }else if(escolhatexto == 6){//se o usuario clicar na caixa de texto buscar e chama a funcao que recebe a escrita do usuario      
+            ReceberEscrita(buscarnome, 24);
+        }
+
+}
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao conta quantas receitas tem no arquivo
 int TamanhoArquivo(const char* caminho){
+    
     FILE *arquivo;
     Receita r;
-    arquivo = fopen(caminho, "r");
     int tamanho = 0;
-    while(fread(&r, sizeof(Receita), 1, arquivo) == 1){
-        tamanho++;
-    }
+
+    arquivo = fopen(caminho, "r");
+
+        while(fread(&r, sizeof(Receita), 1, arquivo) == 1){//enquanto conseguir ler um registro do arquivo
+            tamanho++;//aumenta o tamanho
+        }
+
     fclose(arquivo);
+
     return tamanho;
 }
-
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao desenha o menu principal
 void DesenhaMenuPrincipal(Font fonts[], Rectangle abrirlivro, Rectangle buscarreceita, Rectangle novareceita, Rectangle sair, Rectangle botaovoltar){
 
     Vector2 positions[MAX_FONTS] = { 0 };
     positions[0] = (Vector2){ 74, 17 };
     ClearBackground(COR_FUNDO);
 
-    //titulo
-    //DrawText("Livro de receitas da vovó", 74, 17 , 50, COR_LETRA);
+    //titulo    
     DrawTextEx(fonts[0], "Livro de receitas da vovó", positions[0], 50, 2, COR_LETRA);
 
     //botao abrir livro
@@ -107,157 +281,152 @@ void DesenhaMenuPrincipal(Font fonts[], Rectangle abrirlivro, Rectangle buscarre
     //botao cadastrar receita
     DesenhaBotao(fonts, novareceita, "Cadastrar receita", 23);
     //botao sair
-    DesenhaBotao(fonts, sair, "Sair", 29);
+    DesenhaBotao(fonts, sair, "Guardar", 29);
 
 }
-
-void TelaAbreLivro(Font fonts[], Rectangle botaovoltar, Rectangle botaoproximo, Rectangle botaoanterior, int &posisaoler, int &tamanhoarq){
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao desenha a tela de abrir livro(listagem de receitas)
+void TelaAbreLivro(Font fonts[], Rectangle botaovoltar, Rectangle botaoproximo, Rectangle botaoanterior, int &pagina, int &tamanhoarq){
 
     ClearBackground(COR_FUNDO);
 
-    DrawTextEx(fonts[0], TextFormat("%d/%d", posisaoler + 1, tamanhoarq), (Vector2){screenWidth /2 - 5, 950}, 30, 2, COR_LETRA);
+    //imprime os dados da receita na sua posicao do arquivo
+    Imprimirdados(fonts, pagina, tamanhoarq);
 
-    Imprimirdados(fonts, posisaoler, tamanhoarq);
+    //botao voltar para a tela inicial
+    DesenhaBotao(fonts, botaovoltar, "voltar", 29);
 
-    DesenhaBotao(fonts, botaovoltar, "Voltar", 29);
-
-    BotoesProximoAnterior(fonts, botaoproximo, botaoanterior, tamanhoarq, posisaoler);    
+    //botao proximo e anterior
+    BotoesProximoAnterior(fonts, botaoproximo, botaoanterior, tamanhoarq, pagina);    
+    //numero da receita e total de receitas
+    DrawTextEx(fonts[0], TextFormat("%d/%d", pagina + 1, tamanhoarq), (Vector2){screenWidth /2 - 5, 950}, 30, 2, COR_LETRA);
 
 }
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao desenha a tela de busca de receita
+void TelaBuscaReceita(Font fonts[], Rectangle botaovoltar, Rectangle textobuscar, char* buscarnome, int tamanhoarq, int pagina, int contarbusca, Rectangle botaoproximo, Rectangle botaoanterior){
 
-void TelaBuscaReceita(Font fonts[], Rectangle botaovoltar, Rectangle textobuscar, char* buscarnome, int tamanhoarq, int posisaoler, int contarbusca, Rectangle botaoproximo, Rectangle botaoanterior){
+    ClearBackground(COR_FUNDO);    
 
-    ClearBackground(COR_FUNDO);
-    
+    //botao voltar para a tela inicial
+    DesenhaBotao(fonts, botaovoltar, "voltar", 29);
 
-    BotoesProximoAnterior(fonts, botaoproximo, botaoanterior,contarbusca, posisaoler);
-    DesenhaBotao(fonts, botaovoltar, "Voltar", 29);
-    RetangulosTexto(fonts, textobuscar, buscarnome, 29, "", 1);
+    if(strlen(buscarnome) == 0){//se o usuario nao digitou nada imprimir "buscar"
+        CaixadeTexto(fonts, textobuscar, "buscar", 29, "", 1);
+    }else{//se o usuario digitou algo imprimir o que ele digitou
+        CaixadeTexto(fonts, textobuscar, buscarnome, 29, "", 1);
+    }
 
-    if(contarbusca > 0){
-        DrawTextEx(fonts[0], TextFormat("%d/%d", posisaoler + 1, contarbusca), (Vector2){screenWidth /2 - 5, 950}, 30, 2, COR_LETRA);
-    }else{
+    if(contarbusca > 0){//se o usuario digitou algo e encontrou alguma receita
+        DrawTextEx(fonts[0], TextFormat("%d/%d", pagina + 1, contarbusca), (Vector2){screenWidth /2 - 5, 950}, 30, 2, COR_LETRA);
+    }else{//se o usuario digitou algo e nao encontrou nenhuma receita
         DrawTextEx(fonts[0], TextFormat("%d/%d", 0, 0), (Vector2){screenWidth /2 - 5, 950}, 30, 2, COR_LETRA);
     }
 
-    Imprimirdados(fonts, posisaoler, tamanhoarq, buscarnome);
+    //imprime os dados da receita na sua posicao do arquivo
+    Imprimirdados(fonts, pagina, tamanhoarq, buscarnome);
 
-    if (CheckCollisionPointRec(GetMousePosition(), textobuscar)){
-        SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+    if (CheckCollisionPointRec(GetMousePosition(), textobuscar)){//se o usuario estiver com o mouse sobre a caixa de texto buscar
+        SetMouseCursor(MOUSE_CURSOR_IBEAM);//deixa o cursor do mouse "I"
     }else{
-        SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+        SetMouseCursor(MOUSE_CURSOR_DEFAULT);//deixa o cursor do mouse normal
     }
 
-}
+    //botao proximo e anterior
+    BotoesProximoAnterior(fonts, botaoproximo, botaoanterior,contarbusca, pagina);
 
+}
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao desenha a tela de cadastro de receita
 void TelaCadastroReceita(int &escolha, int escolhatexto, char* ingrediente, Receita &r, Font fonts[], Rectangle botaovoltar, Rectangle textonome, Rectangle botaotipo, Rectangle textoingredientes, Rectangle botaoaddingredientes, Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, Rectangle botaocadastrar){
 
     ClearBackground(COR_FUNDO);
 
-    //DrawText("Cadastrar receita", 300, 100, 20, COR_LETRA);
-    //DrawTextEx(fonts[1], TextFormat("escolatexto: %d", escolhatexto), (Vector2){ 300, 500 }, 40, 2, COR_LETRA_BOTAO);
+    //botao voltar para a tela inicial
+    DesenhaBotao(fonts, botaovoltar, "voltar", 29);
 
-    DesenhaBotao(fonts, botaovoltar, "Voltar", 29);
-    DesenhaBotao(fonts, botaocadastrar, "Cadastrar", 29, escolha);
+    //caixa de texto para o nome da receita
+    CaixadeTexto(fonts, textonome,r.nome, 50, "Nome", 1);
+    //caiixa de texto para o tipo da receita
+    CaixadeTexto(fonts, textoingredientes, ingrediente, 32, "Ingredientes", 1);
+    //botao para adicionar ingredientes
     DesenhaBotao(fonts, botaoaddingredientes, "adicionar", 29, escolha);
-    
-
-    RetangulosTexto(fonts, textonome,r.nome, 50, "Nome", 1);
-    RetangulosTexto(fonts, textoingredientes, ingrediente, 32, "Ingredientes", 1);
-    RetangulosTexto(fonts, textomodopreparo, r.modoPreparo, 40, "Modo de preparo", 2);
-    RetangulosTexto(fonts, textotempopreparo, r.tempoPreparo, 40, "Tempo de preparo", 1);
-    RetangulosTexto(fonts, textorendimento, r.rendimento, 29, "Rendimento", 1);
-    if(r.tipo == '0'){
+    //botao para escolher o tipo da receita
+    if(r.tipo == '0'){//se for do tipo 0 entao imprimir "doce"
         DesenhaBotao(fonts, botaotipo, "Tipo: Doce", 29, escolha);
-    }else if(r.tipo == '1'){
+    }else if(r.tipo == '1'){//se for do tipo 1 entao imprimir "salgado"
         DesenhaBotao(fonts, botaotipo, "Tipo: Salgado", 29, escolha);
     }
+    CaixadeTexto(fonts, textotempopreparo, r.tempoPreparo, 40, "Tempo de preparo", 1);
+    //caixa de texto para o rendimento
+    CaixadeTexto(fonts, textorendimento, r.rendimento, 29, "Rendimento", 1);
+    //caixa de texto para o modo de preparo
+    CaixadeTexto(fonts, textomodopreparo, r.modoPreparo, 40, "Modo de preparo", 2);
+    //caixa de texto para o tempo de preparo
 
+    //botao cadastrar
+    DesenhaBotao(fonts, botaocadastrar, "Cadastrar", 29, escolha);
+
+    //checa se o usuario esta com o mouse sobre alguma caixa de texto
     if (CheckCollisionPointRec(GetMousePosition(), textonome) || CheckCollisionPointRec(GetMousePosition(), textoingredientes) || CheckCollisionPointRec(GetMousePosition(), textomodopreparo) || CheckCollisionPointRec(GetMousePosition(), textotempopreparo) || CheckCollisionPointRec(GetMousePosition(), textorendimento)){
-        SetMouseCursor(MOUSE_CURSOR_IBEAM);
+        SetMouseCursor(MOUSE_CURSOR_IBEAM);//deixa o cursor do mouse "I"
     }else{
-        SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+        SetMouseCursor(MOUSE_CURSOR_DEFAULT);//deixa o cursor do mouse normal
     }
 
 
 }
-
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao alterna o tipo de receita ao clicar no botão
 char TipoReceita(Receita r, Rectangle botaotipo){
-
+    //se o usuario clicar no botao tipo
     if (CheckCollisionPointRec(GetMousePosition(), botaotipo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        return r.tipo == '0' ? '1' : '0';
+        return r.tipo == '0' ? '1' : '0';//alterna entre doce e salgado
     }       
     return r.tipo;
 
 }
-
-int EscolhaTexto(int mousenoquadrado, Rectangle textonome, Rectangle textoingredientes, Rectangle textomodopreparo, Rectangle textotempopreparo, Rectangle textorendimento, Rectangle textobuscar){
-
-    if(CheckCollisionPointRec(GetMousePosition(), textonome) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        //SetMouseCursor(MOUSE_CURSOR_IBEAM);
-        return 1;
-        //mousenoquadrado = 1;
-    }else if(CheckCollisionPointRec(GetMousePosition(), textoingredientes) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        //SetMouseCursor(MOUSE_CURSOR_IBEAM);
-        return 2;
-        //mousenoquadrado = 2;
-    }else if(CheckCollisionPointRec(GetMousePosition(), textomodopreparo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        //SetMouseCursor(MOUSE_CURSOR_IBEAM);
-        return 3;
-        //mousenoquadrado = 3;
-    }else if(CheckCollisionPointRec(GetMousePosition(), textotempopreparo) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        //SetMouseCursor(MOUSE_CURSOR_IBEAM);
-        return 4;
-        //mousenoquadrado = 4;
-    }else if(CheckCollisionPointRec(GetMousePosition(), textorendimento) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        //SetMouseCursor(MOUSE_CURSOR_IBEAM);
-        return 5;
-        //mousenoquadrado = 5;
-    }else if(CheckCollisionPointRec(GetMousePosition(), textobuscar) && IsMouseButtonPressed(MOUSE_LEFT_BUTTON)){
-        return 6;
-    }else if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        //SetMouseCursor(MOUSE_CURSOR_DEFAULT);
-        return 0;
-        //mousenoquadrado = 0;
-    }
-    return mousenoquadrado;
-
-}
-
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao recebe a escrita do teclado e coloca na caixa de texto selecionada
 void ReceberEscrita(char* dado, int max){
 
-    int key = GetCharPressed();
-    key = tolower((char)key);
+    int key = GetCharPressed();//recebe a tecla pressionada
+    key = tolower((char)key);//transforma a letra em minuscula
 
     int pos;
 
         // Check if more characters have been pressed on the same frame
         while (key > 0){
-            pos = strlen(dado);
-            // NOTE: Only allow keys in range [32..125]
-            if ((strlen(dado) < max)){
-                dado[pos] = (char)key;
-                dado[pos+1] = '\0';
-            }
-            if (IsKeyPressed(KEY_ENTER)){
-                dado[pos] = '\n';
-                dado[pos+1] = '\0';
+
+            pos = strlen(dado);//pega a posicao do ultimo caracter da string
+
+            if ((strlen(dado) < max)){//checa se a string nao esta cheia
+                dado[pos] = (char)key;//coloca o caractere na string
+                dado[pos+1] = '\0';//coloca o caractere "\0" na proxima posicao(fim da string)
             }
 
-            key = GetCharPressed();
-            key = tolower((char)key);
+            key = GetCharPressed();//recebe a proxima tecla pressionada
+            key = tolower((char)key);//transforma a letra em minuscula
+
         }
 
-        if (IsKeyDown(KEY_BACKSPACE)){
-            pos = strlen(dado) - 1;
-            if (pos < 0){
-                pos = 0;
+        if (IsKeyDown(KEY_BACKSPACE)){//checa se o usuario apertou a tecla backspace
+            pos = strlen(dado) - 1;//pega a posicao do ultimo caracter da string menos 1
+            if (pos < 0){//se a posicao for menor que 0
+                pos = 0;//deixa a posicao como 0
             }
-            dado[pos] = '\0';
+            dado[pos] = '\0';//coloca o caractere "\0" na posicao(fim da string)
         }
 
-        if (IsKeyPressed(KEY_BACKSPACE) && IsKeyDown(KEY_LEFT_CONTROL)){
+        if (IsKeyPressed(KEY_BACKSPACE) && IsKeyDown(KEY_LEFT_CONTROL)){//checa se o usuario apertou a tecla backspace e ctrl
             
+            //deleta a ultima palavra da string
             while(dado[strlen(dado)-1] != ' '){
                 pos = strlen(dado) - 1;
                 if (pos < 0){
@@ -269,33 +438,36 @@ void ReceberEscrita(char* dado, int max){
 
         }
 }
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao desenha as caixas de texto
+void CaixadeTexto(Font fonts[], Rectangle botao, char* dado, int tamanho, char* titulo, int tipo){
 
-void RetangulosTexto(Font fonts[], Rectangle botao, char* dado, int tamanho, char* titulo, int tipo){
-
-    DrawTextEx(fonts[0], titulo, (Vector2){ botao.x + 13, botao.y - 32 }, 30, 2, COR_LETRA_BOTAO);
+    //desenha a caixa de texto
     DrawRectangleRec(botao, COR_CAIXATEXTO);
+    //escrita do titulo da caixa de texto
+    DrawTextEx(fonts[0], titulo, (Vector2){ botao.x + 13, botao.y - 32 }, 30, 2, COR_LETRA_BOTAO);
 
-    if(tipo == 1){
+    if(tipo == 1){//tipo 1 = caixa de texto para uma linha
         DrawTextEx(fonts[1], dado, (Vector2){ botao.x + 13, botao.y + 7 }, tamanho, 2, COR_LETRA_BOTAO);
-    }else if(tipo == 2){
+    }else if(tipo == 2){//tipo 2 = caixa de texto para mais de uma linha
         DrawTextBoxed(fonts[1], dado, (Rectangle){ botao.x + 4, botao.y + 4, botao.width - 4, botao.height - 4 }, (float)tamanho, 2.0f, true, COR_LETRA_BOTAO);
     }
 
 
 }
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao cadastra a receita no arquivo binario e no arquivo texto
+void CadastroReceita(Receita &r){
 
-void CadastroReceita(Receita &r, int &aux){
-
-    //verificar se o alguma coisa da receita esta vaiza
-    if(strlen(r.nome) == 0 || strlen(r.ingredientes) == 0 || strlen(r.modoPreparo) == 0 || strlen(r.tempoPreparo) == 0 || strlen(r.rendimento) == 0){
-        aux = 1;
-    }else{
-        aux = 0;
-    }
+    
 
     FILE* arq;
     FILE* arq2;
-    //abrir arquivo como app
+    //abrir arquivos como app
+    /*(se o arquivo nao existir, ele sera criado, se o arquivo existir, 
+       os dados serao adicionados ao final do arquivo)*/
     arq = fopen(caminhodat, "a+");
     arq2 = fopen(caminhotxt, "a+");
 
@@ -316,78 +488,94 @@ void CadastroReceita(Receita &r, int &aux){
         fprintf(arq2, "Tempo de Preparo: %s\n", r.tempoPreparo);
         fprintf(arq2, "Rendimento: %s\n", r.rendimento);
 
+    //fechar arquivos
     fclose(arq);
     fclose(arq2);
 
+    //limpar a struct
     r = {0};
     r.tipo = '0';
-    aux = 0;
 
 }
-
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao desenha os botões da tela cadastro
 void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho, int aux){
 
+    //desenha o botao
     DrawRectangleRec(botao, WHITE);
 
-    //DrawText(texto, (int)botao.x + 7, (int)botao.y + 8, tamanho, COR_LETRA_BOTAO);
+    //desenha o texto do botao
     DrawTextEx(fonts[0], texto, (Vector2){ botao.x + 13, botao.y + 10 }, tamanho, 2, COR_LETRA_BOTAO);
 
-    if (CheckCollisionPointRec(GetMousePosition(), botao)){
+    if (CheckCollisionPointRec(GetMousePosition(), botao)){//checa se o mouse esta sobre o botao
         for(int i = 0; i < 4; i++){
+            //desenha o botao com a borda diferente
             DrawRectangleLines((int)botao.x - i, (int)botao.y - i, (int)botao.width + i*2, (int)botao.height + i*2, COR_BOTAO_SELECIONADO);
         }
     }
 }
-
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao desenha os botões
 void DesenhaBotao(Font fonts[], Rectangle botao, const char* texto, int tamanho){
 
+    //desenha o botao
     DrawRectangleRec(botao, COR_BOTAO);
 
-    //DrawText(texto, (int)botao.x + 7, (int)botao.y + 8, tamanho, COR_LETRA_BOTAO);
+    //desenha o texto do botao
     DrawTextEx(fonts[0], texto, (Vector2){ botao.x + 13, botao.y + 7 }, tamanho, 2, COR_LETRA_BOTAO);
 
-    if (CheckCollisionPointRec(GetMousePosition(), botao)){
-        for(int i = 0; i < 4; i++){
+    if (CheckCollisionPointRec(GetMousePosition(), botao)){//checa se o mouse esta sobre o botao
+        for(int i = 0; i < 4; i++){            
+            //desenha o botao com a borda diferente mais grossa
             DrawRectangleLines((int)botao.x - i, (int)botao.y - i, (int)botao.width + i*2, (int)botao.height + i*2, COR_BOTAO_SELECIONADO);
-            //DrawRectangleRec(botao, COR_BOTAO_SELECIONADO);
-            //DrawText(texto, (int)botao.x + 7, (int)botao.y + 8, tamanho, COR_LETRA_BOTAO);
         }
-    }else DrawRectangleLines((int)botao.x, (int)botao.y, (int)botao.width, (int)botao.height, BLACK);
+    }else {
+        //desenha o botao com a borda normal
+        DrawRectangleLines((int)botao.x, (int)botao.y, (int)botao.width, (int)botao.height, BLACK);
+    }
 }
-
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao adiciona o ingrediente da caixa de texto na variavel da receita
 int AdiconarIngrediente(char* ingredientes, Receita &r){
-    strcat(r.ingredientes, ingredientes);
-    strcat(r.ingredientes, "\n");
-    strcpy(ingredientes, "\0");
+
+    strcat(r.ingredientes, ingredientes);//adiciona o ingrediente na variavel da receita
+    strcat(r.ingredientes, "\n");//adiciona uma quebra de linha no final da receita
+    strcpy(ingredientes, "\0");//limpa a caixa de texto
+
     return 3;
 }
-
-void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq){
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao imprime os dados da receita selecionada
+void Imprimirdados(Font fonts[], int pagina, int tamanhoarq){
     
-    
+    //posicoes dos textos
     Vector2 positions[7] = { 0 };
-    positions[0] = (Vector2){ 30, 100 };
-    positions[1] = (Vector2){ 30, 200 };
-    positions[2] = (Vector2){ 30, 300 };
-    positions[3] = (Vector2){ 30, 400 };
-    positions[4] = (Vector2){ 30, 500 };
-    positions[5] = (Vector2){ 30, 600 };
-    positions[6] = (Vector2){ screenWidth /2 - 5, 950 };
+    positions[0] = (Vector2){ 30, 100 };//nome
+    positions[1] = (Vector2){ 30, 200 };//ingredientes
+    positions[2] = (Vector2){ 30, 300 };//tempo de preparo
+    positions[3] = (Vector2){ 30, 400 };//rendimento
+    positions[4] = (Vector2){ 30, 500 };//modo de preparo
+    positions[5] = (Vector2){ 30, 600 };//tipo
     
-    //abrindo arquivo como in
-    FILE *arquivo;
 
-    if(tamanhoarq == 0){
+    if(tamanhoarq == 0){//checa se o arquivo estiver vazio
         DrawTextEx(fonts[0], "Nao ha receitas cadastradas", (Vector2){ 30, 100 }, 20, 2, COR_LETRA);
     }else{
 
+        FILE *arquivo;
+        //abrindo arquivo como in
         arquivo = fopen(caminhodat, "r");        
 
         //lendo o arquivo
         Receita r;
         int i = 0;
-        while(fread(&r, sizeof(Receita), 1, arquivo) == 1){
-            if(i == posisaoler){
+        while(fread(&r, sizeof(Receita), 1, arquivo) == 1){//enquanto nao chegar no final do arquivo
+            if(i == pagina){//checa se a posicao do arquivo e igual a posicao da pagina
+                //imprime os dados da receita
                 DrawTextEx(fonts[0], TextFormat("Nome: %s",r.nome), positions[0], 40, 2, COR_LETRA);
                 DrawTextEx(fonts[0], TextFormat("Ingredientes: %s",r.ingredientes), positions[1], 40, 2, COR_LETRA);
                 DrawTextEx(fonts[0], TextFormat("Tempo de Preparo: %s",r.tempoPreparo), positions[2], 40, 2, COR_LETRA);
@@ -403,46 +591,53 @@ void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq){
             i++;
         }
 
+        //fechando arquivo
         fclose(arquivo);
     }
 }
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao imprime os dados da receita que foi buscada
+void Imprimirdados(Font fonts[], int pagina, int tamanhoarq, char* textobuscar){
 
-void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq, char* textobuscar){
-
+    //posicoes dos textos
     Vector2 positions[7] = { 0 };
-    positions[0] = (Vector2){ 30, 100 };
-    positions[1] = (Vector2){ 30, 200 };
-    positions[2] = (Vector2){ 30, 300 };
-    positions[3] = (Vector2){ 30, 400 };
-    positions[4] = (Vector2){ 30, 500 };
-    positions[5] = (Vector2){ 30, 600 };
-    positions[6] = (Vector2){ screenWidth /2 - 5, 950 };
+    positions[0] = (Vector2){ 30, 100 };//nome
+    positions[1] = (Vector2){ 30, 200 };//ingredientes
+    positions[2] = (Vector2){ 30, 300 };//tempo de preparo
+    positions[3] = (Vector2){ 30, 400 };//rendimento
+    positions[4] = (Vector2){ 30, 500 };//modo de preparo
+    positions[5] = (Vector2){ 30, 600 };//tipo
 
-    if(tamanhoarq == 0){
+    if(tamanhoarq == 0){//checa se o arquivo estiver vazio
         DrawTextEx(fonts[0], "Nao ha receitas cadastradas", (Vector2){ 30, 100 }, 20, 2, COR_LETRA);
     }else{
 
-        //abrindo arquivo como in
         FILE *arquivo;
+        //abrindo arquivo como in
         arquivo = fopen(caminhodat, "r");
 
         Receita r;
-        Receita *aux = new Receita[tamanhoarq];
         int cont = 0;
-        while(fread(&r, sizeof(Receita), 1, arquivo) == 1){
-            if(strcmp(r.nome, textobuscar) == 0){
+        //cria um vetor dinamico para armazenar as receitas que contem o texto buscado
+        Receita *aux = new Receita[tamanhoarq];
+
+
+        while(fread(&r, sizeof(Receita), 1, arquivo) == 1){//enquanto nao chegar no final do arquivo
+            if(strcmp(r.nome, textobuscar) == 0){//checa se o nome da receita e igual ao texto de busca
                 aux[cont] = r;
                 cont++;
             }
         }
-        if(cont == 0){
+        if(cont == 0){//checa se nao foi encontrado nenhuma receita com o texto de busca
             DrawTextEx(fonts[0], "Nenhuma receita encontrada", (Vector2){ 30, 100 }, 20, 2, COR_LETRA);
         }else{
 
             int i = 0;
 
-            while(i < cont){
-                if(i == posisaoler){
+            while(i < cont){//enquanto nao chegar no final do vetor
+                if(i == pagina){//checa se a posicao do vetor e igual a posicao da pagina
+                    //imprime os dados da receita
                     DrawTextEx(fonts[0], TextFormat("Nome: %s",aux[i].nome), positions[0], 40, 2, COR_LETRA);
                     DrawTextEx(fonts[0], TextFormat("Ingredientes: %s",aux[i].ingredientes), positions[1], 40, 2, COR_LETRA);
                     DrawTextEx(fonts[0], TextFormat("Tempo de Preparo: %s",aux[i].tempoPreparo), positions[2], 40, 2, COR_LETRA);
@@ -453,48 +648,58 @@ void Imprimirdados(Font fonts[], int posisaoler, int tamanhoarq, char* textobusc
                     }else if(aux[i].tipo == '1'){
                         DrawTextEx(fonts[0], "Tipo: Salgado", positions[5], 40, 2, COR_LETRA);
                     }
-                    // DrawTextEx(fonts[0], "FOI", (Vector2){ 30, 100 }, 20, 2, COR_LETRA);
-
+                    break;
                 }
                 i++;
             }
         }
+        //fechando arquivo
         fclose(arquivo);
     }
 
 }
-
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao conta quantas receitas foram encontradas da busca
 int ContarBusca(char* textobuscar){
-    FILE *arquivo;
-    arquivo = fopen(caminhodat, "r");
 
+    FILE *arquivo;
     Receita r;
     int cont = 0;
-    while(fread(&r, sizeof(Receita), 1, arquivo) == 1){
-        if(strcmp(r.nome, textobuscar) == 0){
-            cont++;
+
+    //abrindo arquivo como in
+    arquivo = fopen(caminhodat, "r");
+
+        while(fread(&r, sizeof(Receita), 1, arquivo) == 1){//enquanto nao chegar no final do arquivo
+            if(strcmp(r.nome, textobuscar) == 0){//checa se o nome da receita e igual ao texto de busca
+                cont++;//incrementa o contador
+            }
         }
-    }
+    
+    //fechando arquivo
     fclose(arquivo);
+
     return cont;
 }
-
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essa funcao desenha os botões de proximo e anterior
 void BotoesProximoAnterior(Font fonts[], Rectangle botaoproximo, Rectangle botaoanterior, int a, int b){
 
-    if(a > 0 && b < a - 1){
-        DesenhaBotao(fonts, botaoproximo, "Proximo", 28);
+    if(a > 0 && b < a - 1){//checa se a pagina atual e menor que a quantidade de paginas
+        DesenhaBotao(fonts, botaoproximo, "Proximo", 28);//desenha o botao proximo
     }
-    if(b > 0){
-        DesenhaBotao(fonts, botaoanterior, "Anterior", 28);
+    if(b > 0){//checa se a pagina atual e maior que 0
+        DesenhaBotao(fonts, botaoanterior, "Anterior", 28);//desenha o botao anterior
     }
 
 }
-
-
+//---------------------------------------------------------
+//---------------------------------------------------------
+//essas funções são para o escrever texto dentro da caixa de texto
 static void DrawTextBoxed(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint){
     DrawTextBoxedSelectable(font, text, rec, fontSize, spacing, wordWrap, tint, 0, 0, WHITE, WHITE);
 }
-
 static void DrawTextBoxedSelectable(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectTint, Color selectBackTint){
     int length = TextLength(text);  // Total length in bytes of the text, scanned by codepoints in loop
 
@@ -621,8 +826,7 @@ static void DrawTextBoxedSelectable(Font font, const char *text, Rectangle rec, 
         if ((textOffsetX != 0) || (codepoint != ' ')) textOffsetX += glyphWidth;  // avoid leading spaces
     }
 }
-
-
+//---------------------------------------------------------
 
 
 
