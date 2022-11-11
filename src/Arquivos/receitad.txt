@@ -1,67 +1,48 @@
 ----------------------------------------
-Nome: doce 1
+Nome: briagdeiro
 Tipo: Doce
 Ingredientes: 
-doce 1
+1 lata de leite condensado
+1 colher de manteiga
+4 colheres de achocolatado em po
 Modo de Preparo: 
-doce 1
-Tempo de Preparo: doce 1
-Rendimento: doce 1
+misture tudo e leve para uma panela, coloque em fogo baixo e mexa ate ficar grosso e desgudar do fundo da panela. coloque em um pote e leve para a geladeira ate esfirar. faca as bolinhas.
+Tempo de Preparo: 15 minutos
+Rendimento: 10 porcoes
 ----------------------------------------
-Nome: doce 2
+Nome: brigadeiro
 Tipo: Doce
 Ingredientes: 
-doce 2
+1 lata de leite condensado
+1 lata de creme de leite
+1 colher de manteiga
+6 colheres de achocolatado em po
 Modo de Preparo: 
-doce 2
-Tempo de Preparo: doce 2
-Rendimento: doce 2
+misture tudo e leva em fogo baixo ate engrossar e desgudar do fundo. apos isso, coloque em um recipiente e coloque na geladeira para esfriar. coma com uma colher.
+Tempo de Preparo: 20 minutos
+Rendimento: 15 porcoes
 ----------------------------------------
-Nome: salgado 1
+Nome: omelete
 Tipo: Salgado
 Ingredientes: 
-salgado 1
+2 ovos
+cheiro verde
+sal
 Modo de Preparo: 
-salgado 1
-Tempo de Preparo: salgado 1
-Rendimento: salgado 1
+bata os ovos e misture com o cheiro verde e sal a gosto. coloque em uma panela em fogo medio e tampe, aguarde um pouco e vire a omelete. sirva em um prato e saboreie
+Tempo de Preparo: 5 minutos
+Rendimento: 1 porcaom
 ----------------------------------------
-Nome: doce 3
+Nome: cookies
 Tipo: Doce
 Ingredientes: 
-doce 3
+farinha
+acucar demerara
+acucar refinado
+ovo
+manteiga
+gotas de chocolate
 Modo de Preparo: 
-doce 3
-Tempo de Preparo: doce 3
-Rendimento: doce 3
-----------------------------------------
-Nome: brigadeiro
-Tipo: Doce
-Ingredientes: 
-leite cond
-margarina
-nescau
-Modo de Preparo: 
-misture tudo e leve ao fogo ate desgrudar da panela.
-Tempo de Preparo: 15 min
-Rendimento: 10
-----------------------------------------
-Nome: brigadeiro
-Tipo: Doce
-Ingredientes: 
-a
-b
-Modo de Preparo: 
-abc
-Tempo de Preparo: a
-Rendimento: a
-----------------------------------------
-Nome: teste
-Tipo: Doce
-Ingredientes: 
-teste
-teste
-Modo de Preparo: 
-teste
-Tempo de Preparo: teste
-Rendimento: teste
+derreta a manteiga e misture com todos os infredientes menos a farinha e as gotas de chocolate. apos misturar bem, coloque as gotas de cocolate e vai colocando a farinha aos poucos ate a massa desgrudar da mao. faca bolinhas em uma forma e leve ao forno preaquecido.
+Tempo de Preparo: 40 minutos
+Rendimento: 30 cookies

@@ -43,6 +43,7 @@ int main(void){
     int escolhatexto = 0;
     int pagina = 0;
     int tamanhoarq = 0;
+    int quantingrediente = 0;
 
     //variaveis de texto
     struct Receita r = {0};
@@ -64,12 +65,12 @@ int main(void){
         //a escolha 2 é a tela de abrir livro, a escolha 3 é a tela de buscar receita
         //a variavel escolha recebe o valor da tela que o usuario escolheu de acordo 
         //com o clique do mouse no botao
-        escolha = EscolhaBotao(r, escolha, abrirlivro, buscarreceita, novareceita, sair, botaovoltar, botaocadastro, botaoaddingredientes, botaoproximo, botaoanterior);
+        escolha = EscolhaBotao(r, escolha, abrirlivro, buscarreceita, novareceita, sair, botaovoltar, botaocadastro, botaoaddingredientes, botaoproximo, botaoanterior, escolhatexto);
         //---------------------------------------------------------
         //---------------------------------------------------------
         //a variavel escolhatexto recebe o valor da caixa de texto que o usuario 
         //escolheu de acordo com o clique do mouse na caixa do texto
-        escolhatexto = EscolhaTexto(escolhatexto, textonome, textoingredientes, textomodopreparo, textotempopreparo, textorendimento, textobuscar);
+        escolhatexto = EscolhaTexto(escolhatexto, textonome, textoingredientes, textomodopreparo, textotempopreparo, textorendimento, textobuscar, botaoaddingredientes);
         //---------------------------------------------------------
         //---------------------------------------------------------
         //a variavel contarbusca recebe a quantidade de resultados da busca
@@ -86,7 +87,7 @@ int main(void){
         //---------------------------------------------------------
         //---------------------------------------------------------
         //checa a escolha do usuario e executa a acao correspondente
-        ChecarEscolha(escolha, r, ingrediente, pagina, tamanhoarq, contarbusca, buscarnome);
+        ChecarEscolha(escolha, r, ingrediente, pagina, tamanhoarq, contarbusca, buscarnome, quantingrediente);
         //---------------------------------------------------------
         //---------------------------------------------------------
         //checa a escolha do texto e armazena o texto digitado pelo usuario 
@@ -134,7 +135,6 @@ int main(void){
                 textonome.width = -1;
                 botaotipo.width = -1;
                 textoingredientes.width = -1;
-                textomodopreparo.width = -1;
                 textotempopreparo.width = -1;
                 textorendimento.width = -1;
                 botaocadastro.width = -1;
@@ -146,9 +146,10 @@ int main(void){
                 botaovoltar = { 10, 10, 107, 40 };
                 botaoanterior = { 10, screenHeight - 55, 140, 44 };
                 botaoproximo = { screenWidth - 135, screenHeight - 55, 120, 44 };
+                textomodopreparo = { 20, 615, screenWidth - 40, 470};
 
                 //funcao que desenha a tela de listar receitas
-                TelaAbreLivro(fonts, botaovoltar, botaoproximo, botaoanterior, pagina, tamanhoarq);
+                TelaAbreLivro(fonts, botaovoltar, botaoproximo, botaoanterior, pagina, tamanhoarq, textomodopreparo);
 
             }else if (escolha == 2){
                 
@@ -161,7 +162,6 @@ int main(void){
                 textonome.width = -1;
                 botaotipo.width = -1;
                 textoingredientes.width = -1;
-                textomodopreparo.width = -1;
                 textotempopreparo.width = -1;
                 textorendimento.width = -1;
                 botaocadastro.width = -1;
@@ -172,10 +172,11 @@ int main(void){
                 botaovoltar = { 10, 10, 107, 40 };
                 textobuscar = { screenWidth - 330, 10, 320, 40 };                
                 botaoanterior = { 10, screenHeight - 55, 140, 44 };
-                botaoproximo = { screenWidth - 135, screenHeight - 55, 120, 44 };
+                botaoproximo = { screenWidth - 135, screenHeight - 55, 120, 44 };                
+                textomodopreparo = { 20, 615, screenWidth - 40, 470};
 
                 //funcao que desenha a tela de buscar receitas
-                TelaBuscaReceita(fonts, botaovoltar, textobuscar, buscarnome, tamanhoarq, pagina, contarbusca, botaoproximo, botaoanterior);
+                TelaBuscaReceita(fonts, botaovoltar, textobuscar, buscarnome, tamanhoarq, pagina, contarbusca, botaoproximo, botaoanterior, textomodopreparo);
 
             }else if (escolha == 3){
 
@@ -194,8 +195,8 @@ int main(void){
                 //x, y, largura, altura
                 botaovoltar = { 10, 10, 107, 40 };
                 textonome = { 10, 90, 675, 70 };
-                botaotipo = { 475, 200, 210, 50 };
-                textoingredientes = { 10, 200, 280, 50 };
+                botaotipo = { 475, 10, 210, 50 };
+                textoingredientes = { 10, 200, 510, 50 };
                 botaoaddingredientes = { textoingredientes.x + textoingredientes.width + 5, textoingredientes.y, 160, 50 };
                 textotempopreparo = { 10, 295, 290, 50 };
                 textorendimento = { 380, 295, 225, 50 };
@@ -203,7 +204,7 @@ int main(void){
                 botaocadastro = { screenWidth - 175, screenHeight - 55, 160, 44 };
 
                 //funcao que desenha a tela de cadastro de receitas
-                TelaCadastroReceita(escolha, escolhatexto, ingrediente, r, fonts, botaovoltar, textonome, botaotipo, textoingredientes, botaoaddingredientes, textomodopreparo, textotempopreparo, textorendimento, botaocadastro);
+                TelaCadastroReceita(escolha, escolhatexto, ingrediente, r, fonts, botaovoltar, textonome, botaotipo, textoingredientes, botaoaddingredientes, textomodopreparo, textotempopreparo, textorendimento, botaocadastro, quantingrediente);
 
             }else if (escolha == 4){//sair do programa
                 return 0;
