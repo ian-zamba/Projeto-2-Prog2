@@ -3555,7 +3555,7 @@
 
 1666120200 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receitas\src\structs.h
 
-1666423477 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rcore.c
+1668141978 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rcore.c
 	"raylib.h"
 	"config.h"
 	"utils.h"
@@ -3606,17 +3606,17 @@
 	<emscripten/emscripten.h>
 	<emscripten/html5.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\raylib.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\raylib.h
 	<stdarg.h>
 	<stdbool.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\config.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\config.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\utils.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\utils.h
 	<stdio.h>
 	<android/asset_manager.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rlgl.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rlgl.h
 	<stdbool.h>
 	<OpenGL/gl.h>
 	<OpenGL/glext.h>
@@ -3630,7 +3630,7 @@
 	<string.h>
 	<math.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glad.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glad.h
 	<winapifamily.h>
 	<stdint.h>
 	<inttypes.h>
@@ -3639,10 +3639,10 @@
 	<stdlib.h>
 	<string.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\raymath.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\raymath.h
 	<math.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rgestures.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rgestures.h
 	<stdbool.h>
 	<sys/time.h>
 	<time.h>
@@ -3650,10 +3650,10 @@
 	<mach/clock.h>
 	<mach/mach.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rcamera.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rcamera.h
 	<math.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\msf_gif.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\msf_gif.h
 	"msf_gif.h"
 	<stdint.h>
 	<stddef.h>
@@ -3662,24 +3662,24 @@
 	<intrin.h>
 	<emmintrin.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\sinfl.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\sinfl.h
 	<string.h>
 	<assert.h>
 	<emmintrin.h>
 	<arm_neon.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\sdefl.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\sdefl.h
 	<assert.h>
 	<string.h>
 	<limits.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\dirent.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\dirent.h
 	<io.h>
 	<stdlib.h>
 	<string.h>
 	<errno.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\include\glfw\glfw3.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\include\glfw\glfw3.h
 	<stddef.h>
 	<stdint.h>
 	<vulkan/vulkan.h>
@@ -3702,7 +3702,7 @@
 	<GL/gl.h>
 	<GL/glext.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\include\glfw\glfw3native.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\include\glfw\glfw3native.h
 	<ApplicationServices/ApplicationServices.h>
 	<X11/Xlib.h>
 	<X11/extensions/Xrandr.h>
@@ -3711,7 +3711,7 @@
 	<EGL/egl.h>
 	<GL/osmesa.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\include\android_native_app_glue.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\include\android_native_app_glue.h
 	<poll.h>
 	<pthread.h>
 	<sched.h>
@@ -3719,7 +3719,7 @@
 	<android/looper.h>
 	<android/native_activity.h>
 
-1666423477 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rglfw.c
+1668141978 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rglfw.c
 	"external/glfw/src/context.c"
 	"external/glfw/src/init.c"
 	"external/glfw/src/input.c"
@@ -3770,7 +3770,7 @@
 	"external/glfw/src/egl_context.c"
 	"external/glfw/src/osmesa_context.c"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\context.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\context.c
 	"internal.h"
 	<assert.h>
 	<stdio.h>
@@ -3778,7 +3778,7 @@
 	<limits.h>
 	<stdio.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\internal.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\internal.h
 	"glfw_config.h"
 	"../include/GLFW/glfw3.h"
 	"cocoa_platform.h"
@@ -3789,7 +3789,7 @@
 	"egl_context.h"
 	"osmesa_context.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_platform.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_platform.h
 	<stdint.h>
 	<dlfcn.h>
 	<Carbon/Carbon.h>
@@ -3797,19 +3797,19 @@
 	"cocoa_joystick.h"
 	"nsgl_context.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\posix_thread.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\posix_thread.h
 	<pthread.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_joystick.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_joystick.h
 	<IOKit/IOKitLib.h>
 	<IOKit/IOCFPlugIn.h>
 	<IOKit/hid/IOHIDLib.h>
 	<IOKit/hid/IOHIDKeys.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\nsgl_context.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\nsgl_context.h
 	<stdatomic.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_platform.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_platform.h
 	<wctype.h>
 	<windows.h>
 	<dinput.h>
@@ -3819,20 +3819,20 @@
 	"win32_joystick.h"
 	"wgl_context.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\deps\mingw\dinput.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\deps\mingw\dinput.h
 	<objbase.h>
 	<_mingw_dxhelper.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\deps\mingw\_mingw_dxhelper.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\deps\mingw\_mingw_dxhelper.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\deps\mingw\xinput.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\deps\mingw\xinput.h
 	<windef.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_joystick.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_joystick.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wgl_context.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wgl_context.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\x11_platform.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\x11_platform.h
 	<unistd.h>
 	<signal.h>
 	<stdint.h>
@@ -3854,21 +3854,21 @@
 	"linux_joystick.h"
 	"null_joystick.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\posix_time.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\posix_time.h
 	<stdint.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\xkb_unicode.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\xkb_unicode.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\glx_context.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\glx_context.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\linux_joystick.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\linux_joystick.h
 	<linux/input.h>
 	<linux/limits.h>
 	<regex.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\null_joystick.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\null_joystick.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wl_platform.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wl_platform.h
 	<wayland-client.h>
 	<xkbcommon/xkbcommon.h>
 	<xkbcommon/xkbcommon-compose.h>
@@ -3885,17 +3885,17 @@
 	"wayland-pointer-constraints-unstable-v1-client-protocol.h"
 	"wayland-idle-inhibit-unstable-v1-client-protocol.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\null_platform.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\null_platform.h
 	<dlfcn.h>
 	"posix_time.h"
 	"posix_thread.h"
 	"null_joystick.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\egl_context.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\egl_context.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\osmesa_context.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\osmesa_context.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\init.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\init.c
 	"internal.h"
 	"mappings.h"
 	<string.h>
@@ -3904,9 +3904,9 @@
 	<stdarg.h>
 	<assert.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\mappings.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\mappings.h
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\input.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\input.c
 	"internal.h"
 	<assert.h>
 	<float.h>
@@ -3914,7 +3914,7 @@
 	<stdlib.h>
 	<string.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\monitor.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\monitor.c
 	"internal.h"
 	<assert.h>
 	<math.h>
@@ -3923,30 +3923,30 @@
 	<stdlib.h>
 	<limits.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\vulkan.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\vulkan.c
 	"internal.h"
 	<assert.h>
 	<string.h>
 	<stdlib.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\window.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\window.c
 	"internal.h"
 	<assert.h>
 	<string.h>
 	<stdlib.h>
 	<float.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_init.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_init.c
 	"internal.h"
 	<stdlib.h>
 	<malloc.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_joystick.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_joystick.c
 	"internal.h"
 	<stdio.h>
 	<math.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_monitor.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_monitor.c
 	"internal.h"
 	<stdlib.h>
 	<string.h>
@@ -3954,14 +3954,14 @@
 	<malloc.h>
 	<wchar.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_time.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_time.c
 	"internal.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_thread.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_thread.c
 	"internal.h"
 	<assert.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_window.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\win32_window.c
 	"internal.h"
 	<limits.h>
 	<stdlib.h>
@@ -3970,26 +3970,26 @@
 	<windowsx.h>
 	<shellapi.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wgl_context.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wgl_context.c
 	"internal.h"
 	<stdlib.h>
 	<malloc.h>
 	<assert.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\egl_context.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\egl_context.c
 	"internal.h"
 	<stdio.h>
 	<string.h>
 	<stdlib.h>
 	<assert.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\osmesa_context.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\osmesa_context.c
 	<stdlib.h>
 	<string.h>
 	<assert.h>
 	"internal.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wl_init.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wl_init.c
 	"internal.h"
 	<assert.h>
 	<errno.h>
@@ -4004,7 +4004,7 @@
 	<time.h>
 	<wayland-client.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wl_monitor.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wl_monitor.c
 	"internal.h"
 	<stdio.h>
 	<stdlib.h>
@@ -4012,7 +4012,7 @@
 	<errno.h>
 	<math.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wl_window.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\wl_window.c
 	"internal.h"
 	<stdio.h>
 	<stdlib.h>
@@ -4024,7 +4024,7 @@
 	<sys/timerfd.h>
 	<poll.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\x11_init.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\x11_init.c
 	"internal.h"
 	<stdlib.h>
 	<string.h>
@@ -4033,14 +4033,14 @@
 	<locale.h>
 	<unistd.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\x11_monitor.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\x11_monitor.c
 	"internal.h"
 	<limits.h>
 	<stdlib.h>
 	<string.h>
 	<math.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\x11_window.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\x11_window.c
 	"internal.h"
 	<X11/cursorfont.h>
 	<X11/Xmd.h>
@@ -4052,13 +4052,13 @@
 	<errno.h>
 	<assert.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\glx_context.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\glx_context.c
 	"internal.h"
 	<string.h>
 	<stdlib.h>
 	<assert.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\linux_joystick.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\linux_joystick.c
 	"internal.h"
 	<sys/types.h>
 	<sys/stat.h>
@@ -4071,29 +4071,29 @@
 	<string.h>
 	<unistd.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\posix_thread.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\posix_thread.c
 	"internal.h"
 	<assert.h>
 	<string.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\posix_time.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\posix_time.c
 	"internal.h"
 	<unistd.h>
 	<sys/time.h>
 	<time.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\xkb_unicode.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\xkb_unicode.c
 	"internal.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\null_joystick.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\null_joystick.c
 	"internal.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_init.m
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_init.m
 	"internal.h"
 	<sys/param.h>
 	<crt_externs.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_joystick.m
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_joystick.m
 	"internal.h"
 	<unistd.h>
 	<ctype.h>
@@ -4103,7 +4103,7 @@
 	<CoreFoundation/CoreFoundation.h>
 	<Kernel/IOKit/hidsystem/IOHIDUsageTables.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_monitor.m
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_monitor.m
 	"internal.h"
 	<stdlib.h>
 	<limits.h>
@@ -4111,28 +4111,28 @@
 	<IOKit/graphics/IOGraphicsLib.h>
 	<ApplicationServices/ApplicationServices.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_window.m
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_window.m
 	"internal.h"
 	<float.h>
 	<string.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_time.c
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\cocoa_time.c
 	"internal.h"
 	<mach/mach_time.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\nsgl_context.m
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\glfw\src\nsgl_context.m
 	"internal.h"
 	<unistd.h>
 	<math.h>
 
-1666423477 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rshapes.c
+1668141978 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rshapes.c
 	"raylib.h"
 	"config.h"
 	"rlgl.h"
 	<math.h>
 	<float.h>
 
-1666423477 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rtext.c
+1668141978 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rtext.c
 	"raylib.h"
 	"config.h"
 	"utils.h"
@@ -4145,11 +4145,11 @@
 	"external/stb_rect_pack.h"
 	"external/stb_truetype.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_rect_pack.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_rect_pack.h
 	<stdlib.h>
 	<assert.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_truetype.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_truetype.h
 	"stb_truetype.h"
 	<stdio.h>
 	"stb_truetype.h"
@@ -4163,7 +4163,7 @@
 	<string.h>
 	<string.h>
 
-1666423477 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rtextures.c
+1668141978 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\rtextures.c
 	"raylib.h"
 	"config.h"
 	"utils.h"
@@ -4176,7 +4176,7 @@
 	"external/stb_image_write.h"
 	"external/stb_image_resize.h"
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_image.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_image.h
 	"stb_image.h"
 	<stdio.h>
 	<stdlib.h>
@@ -4193,7 +4193,7 @@
 	<intrin.h>
 	<arm_neon.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_image_write.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_image_write.h
 	<stdlib.h>
 	<stdio.h>
 	<stdarg.h>
@@ -4202,7 +4202,7 @@
 	<math.h>
 	<assert.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_image_resize.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\external\stb_image_resize.h
 	"stb_image_resize.h"
 	<stdint.h>
 	<assert.h>
@@ -4210,7 +4210,7 @@
 	<math.h>
 	<stdlib.h>
 
-1666423477 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\utils.c
+1668141978 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\raylib\utils.c
 	"raylib.h"
 	"config.h"
 	"utils.h"
@@ -4222,7 +4222,7 @@
 	<stdarg.h>
 	<string.h>
 
-1666423477 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\tinycthread\tinycthread.c
+1668141978 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\tinycthread\tinycthread.c
 	"tinycthread.h"
 	<stdlib.h>
 	<signal.h>
@@ -4233,20 +4233,20 @@
 	<process.h>
 	<sys/timeb.h>
 
-1666423477 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\tinycthread\tinycthread.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\tinycthread\tinycthread.h
 	<time.h>
 	<pthread.h>
 	<windows.h>
 
-1668138532 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\main.cpp
+1668141978 source:c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\main.cpp
 	"funcoes.h"
 
-1668138950 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\funcoes.h
+1668625882 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\funcoes.h
 	<stdio.h>
 	<string.h>
 	<cctype>
 	"raylib.h"
 	"structs.h"
 
-1668134453 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\structs.h
+1668141978 c:\users\ianmt\onedrive\programas\tudo\programas\ufs\prog2\projeto 2 p2\livro de receita\src\structs.h
 
